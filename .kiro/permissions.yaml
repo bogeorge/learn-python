@@ -1,0 +1,78 @@
+# Kiro permissions configuration for this workspace
+# This file grants broad permissions to avoid prompts in this workspace
+# Uses the correct permissions.yaml format from Kiro documentation
+
+# version field is optional but recommended
+version: 1
+
+# List of policy presets to apply at workspace scope
+# 'allow-all' grants permission for all capabilities except sandbox_network
+policies:
+  - "allow-all"
+
+# Additional rules can be added here to customize the preset
+rules:
+  # Trust file reads anywhere in workspace
+  - capability: fs_read
+    effect: allow
+    match: ["./**"]
+  
+  # Trust file writes anywhere in workspace  
+  - capability: fs_write
+    effect: allow
+    match: ["./**"]
+  
+  # Trust common shell commands for development
+  - capability: shell
+    effect: allow
+    match:
+      - "git *"
+      - "npm *"
+      - "python *"
+      - "pip *"
+      - "make *"
+      - "ls *"
+      - "cat *"
+      - "find *"
+      - "grep *"
+      - "echo *"
+  
+  # Trust network fetches
+  - capability: web_fetch
+    effect: allow
+  
+  # Trust MCP tools
+  - capability: mcp
+    effect: allow
+  
+  # Trust subagents
+  - capability: subagent
+    effect: allow
+  
+  # Trust skills and powers
+  - capability: skill
+    effect: allow
+  - capability: power
+    effect: allow
+  
+  # Block dangerous commands (safety override)
+  - capability: shell
+    effect: deny
+    match:
+      - "rm -rf *"
+      - "sudo *"
+      - "chmod 777 *"
+  
+  # Block writes to sensitive files (safety override)
+  - capability: fs_write
+    effect: deny
+    match:
+      - "**/.env"
+      - "**/.env.*"
+      - "**/*.pem"
+      - "**/*.key"
+      - "**/secrets/**"
+
+# Workspace trust setting
+# This marks the workspace as trusted so Kiro loads its configuration
+workspaceTrusted: true

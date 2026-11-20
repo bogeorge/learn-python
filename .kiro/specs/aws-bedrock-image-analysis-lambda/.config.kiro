@@ -1,0 +1,7 @@
+{
+  "specType": "feature",
+  "workflowType": "requirements-first",
+  "featureName": "aws-bedrock-image-analysis-lambda",
+  "createdAt": "2026-11-20",
+  "phase": "requirements"
+}

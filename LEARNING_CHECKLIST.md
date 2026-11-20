@@ -33,18 +33,18 @@ Use this as your single source of truth. Tick off items as you go. Each section 
 ### Day 3 — Input & Conditional Statements
 📄 [`exercises/week1_day3.py`](exercises/week1_day3.py)
 
-- [ ] `input()` function
-- [ ] `if / elif / else` statements
-- [ ] Comparison and logical operators
-- [ ] Age verification program
-- [ ] Number comparison game
-- [ ] Grade calculator (A–F)
-- [ ] **Mini-project**: Simple login system
+- [x] `input()` function
+- [x] `if / elif / else` statements
+- [x] Comparison and logical operators
+- [x] Age verification program
+- [x] Number comparison game
+- [x] Grade calculator (A–F)
+- [x] **Mini-project**: Simple login system
 
 ---
 
 ### Day 4 — Loops Part 1
-> ⚠️ Exercise file not yet created
+📄 [`exercises/week1_day4.py`](exercises/week1_day4.py)
 
 - [ ] `while` loops
 - [ ] `for` loops with `range()`
@@ -56,7 +56,7 @@ Use this as your single source of truth. Tick off items as you go. Each section 
 ---
 
 ### Day 5 — Loops Part 2 & Lists
-> ⚠️ Exercise file not yet created
+📄 [`exercises/week1_day5.py`](exercises/week1_day5.py)
 
 - [ ] Nested loops, `break`, `continue`
 - [ ] List basics (create, access, modify)
@@ -87,7 +87,7 @@ Use this as your single source of truth. Tick off items as you go. Each section 
 
 ## Week 2: Functions & Data Structures
 
-### Day 8 — Functions Basics
+### Day 8 — Functions Basics\n📄 [`exercises/week2_day8.py`](exercises/week2_day8.py)
 > ⚠️ Exercise file not yet created
 
 - [ ] Defining functions, parameters, return values

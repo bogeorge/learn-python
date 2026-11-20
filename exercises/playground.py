@@ -16,6 +16,9 @@ def thing():
                 print(f"Please enter a number between {low} and {high}!")
                 continue
             
+            for counter in range(0, guess):
+                print(f"counter={counter}")
+
             if guess < lucky:
                 print("Too low!")
             elif guess > lucky:
