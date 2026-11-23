@@ -13,7 +13,7 @@ Note: To run real Bedrock calls, you'll need:
 
 import json
 from typing import Dict, Any, List
-import boto3  # Will fail without AWS config - that's OK for learning
+#import boto3  # Will fail without AWS config - that's OK for learning
 
 
 class MockBedrockClient:
