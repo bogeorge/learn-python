@@ -246,21 +246,26 @@
 # Daily Exercise Template
 # Replace with your daily exercises
 
+
 def exercise_1():
     """Basic exercise description"""
     pass
+
 
 def exercise_2():
     """Intermediate exercise description"""
     pass
 
+
 def exercise_3():
     """Advanced exercise description"""
     pass
 
+
 def mini_project():
     """Daily mini-project"""
     pass
+
 
 if __name__ == "__main__":
     # Test your exercises here

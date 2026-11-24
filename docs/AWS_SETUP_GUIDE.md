@@ -151,34 +151,36 @@ pip install aws-sam-cli  # If not installed globally
 import boto3
 import json
 
+
 # Test basic AWS access
 def test_aws_access():
     print("Testing AWS Access...")
-    
+
     # Create clients
-    sts = boto3.client('sts')
-    lambda_client = boto3.client('lambda')
-    
+    sts = boto3.client("sts")
+    lambda_client = boto3.client("lambda")
+
     # Test STS (always works if credentials are valid)
     identity = sts.get_caller_identity()
     print(f"✅ AWS Identity: {identity['Arn']}")
-    
+
     # Test Lambda access (list functions)
     try:
         functions = lambda_client.list_functions(MaxItems=5)
         print(f"✅ Lambda Access: Can list functions")
-        if functions['Functions']:
+        if functions["Functions"]:
             print(f"   Found {len(functions['Functions'])} functions")
     except Exception as e:
         print(f"⚠️  Lambda Access Issue: {e}")
         print("   This is OK if you haven't created any Lambdas yet")
-    
+
     # Test region
     session = boto3.Session()
     region = session.region_name
     print(f"✅ Region: {region}")
-    
+
     return True
+
 
 if __name__ == "__main__":
     test_aws_access()
@@ -205,11 +207,9 @@ python test_aws.py
 ```python
 import json
 
+
 def lambda_handler(event, context):
-    return {
-        'statusCode': 200,
-        'body': json.dumps('Hello from Bo\'s first Lambda!')
-    }
+    return {"statusCode": 200, "body": json.dumps("Hello from Bo's first Lambda!")}
 ```
 
 6. **Click "Deploy"**
@@ -292,13 +292,11 @@ Resources:
 ```python
 import json
 
+
 def lambda_handler(event, context):
     return {
-        'statusCode': 200,
-        'body': json.dumps({
-            'message': 'Hello from SAM deployment!',
-            'input': event
-        })
+        "statusCode": 200,
+        "body": json.dumps({"message": "Hello from SAM deployment!", "input": event}),
     }
 ```
 
@@ -400,22 +398,20 @@ import os
 import boto3
 from botocore.exceptions import ClientError
 
+
 def get_secret():
-    secret_name = os.environ['DB_PASSWORD_SECRET']
-    region_name = os.environ['AWS_REGION']
-    
+    secret_name = os.environ["DB_PASSWORD_SECRET"]
+    region_name = os.environ["AWS_REGION"]
+
     session = boto3.session.Session()
-    client = session.client(
-        service_name='secretsmanager',
-        region_name=region_name
-    )
-    
+    client = session.client(service_name="secretsmanager", region_name=region_name)
+
     try:
         response = client.get_secret_value(SecretId=secret_name)
     except ClientError as e:
         raise e
-    
-    return response['SecretString']
+
+    return response["SecretString"]
 ```
 
 ## 💰 Cost Management

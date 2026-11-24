@@ -10,7 +10,7 @@ Exercises to practice getting user input and making decisions with if/elif/else.
 def exercise_1_user_input():
     """
     Practice getting input from the user.
-    
+
     1. Ask the user for their name
     2. Ask for their age (convert to integer)
     3. Ask for their favourite number (convert to float)
@@ -20,13 +20,15 @@ def exercise_1_user_input():
     age = int(input("How old are you? "))
     favourite_number = float(input("What is your favourite number? "))
 
-    print(f"\nHello {name}! You are {age} years old and your favourite number is {favourite_number}.")
+    print(
+        f"\nHello {name}! You are {age} years old and your favourite number is {favourite_number}."
+    )
 
 
 def exercise_2_age_verification():
     """
     Ask the user for their age and print a message based on the result.
-    
+
     - Under 13: "You are a child."
     - 13–17: "You are a teenager."
     - 18–64: "You are an adult."
@@ -47,7 +49,7 @@ def exercise_2_age_verification():
 def exercise_3_number_comparison():
     """
     Ask the user for two numbers and compare them.
-    
+
     Print which is larger, or whether they are equal.
     Also print whether each number is positive, negative, or zero.
     """
@@ -75,13 +77,13 @@ def exercise_3_number_comparison():
 def exercise_4_grade_calculator():
     """
     Ask the user for a score (0–100) and print the corresponding letter grade.
-    
+
     - 90–100: A
     - 80–89:  B
     - 70–79:  C
     - 60–69:  D
     - Below 60: F
-    
+
     Also print a short message for each grade.
     """
     score = float(input("Enter your score (0-100): "))
@@ -114,7 +116,7 @@ def exercise_4_grade_calculator():
 def exercise_5_comparison_operators():
     """
     Demonstrate all comparison and logical operators.
-    
+
     Create two integer variables and print the result of every
     comparison, then combine them with and/or/not.
     """
@@ -153,7 +155,7 @@ def exercise_5_comparison_operators():
 def mini_project_login_system():
     """
     A simple login system.
-    
+
     - Store a username and password (hardcoded for practice)
     - Ask the user for their credentials
     - Allow up to 3 attempts before locking them out

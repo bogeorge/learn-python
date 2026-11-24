@@ -265,6 +265,7 @@
 ```python
 import json
 
+
 def lambda_handler(event, context):
     """
     Basic Lambda handler pattern
@@ -272,21 +273,16 @@ def lambda_handler(event, context):
     context: Runtime information about Lambda execution
     """
     # Parse input from event
-    name = event.get('name', 'World')
-    
+    name = event.get("name", "World")
+
     # Business logic
     message = f"Hello {name} from Lambda!"
-    
+
     # Return response (API Gateway expects specific format)
     return {
-        'statusCode': 200,
-        'headers': {
-            'Content-Type': 'application/json'
-        },
-        'body': json.dumps({
-            'message': message,
-            'input': event
-        })
+        "statusCode": 200,
+        "headers": {"Content-Type": "application/json"},
+        "body": json.dumps({"message": message, "input": event}),
     }
 ```
 

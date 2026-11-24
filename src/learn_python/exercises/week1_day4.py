@@ -10,7 +10,7 @@ Exercises to practice while loops and for loops with range().
 def exercise_1_while_loop_basics():
     """
     Demonstrate a basic while loop.
-    
+
     Count from 1 to 10, printing each number.
     Then count down from 10 to 1.
     """
@@ -31,7 +31,7 @@ def exercise_1_while_loop_basics():
 def exercise_2_for_loop_basics():
     """
     Demonstrate for loops with range().
-    
+
     1. Print numbers 0–9
     2. Print even numbers from 0–20
     3. Print numbers 10 down to 1 using range() with a step
@@ -74,7 +74,7 @@ def exercise_3_countdown_timer():
 def exercise_4_multiplication_table():
     """
     Ask the user for a number and print its multiplication table up to 12.
-    
+
     Example for 5:
         5 x  1 =  5
         5 x  2 = 10
@@ -95,7 +95,7 @@ def exercise_5_sum_of_range():
     1. The sum of all integers in that range (inclusive)
     2. The sum of even numbers only
     3. The sum of odd numbers only
-    
+
     Print all three results.
     """
     start = int(input("Enter start number: "))
@@ -124,12 +124,12 @@ def exercise_5_sum_of_range():
 def mini_project_guessing_game():
     """
     A number guessing game (1–100).
-    
+
     - The computer picks a random number between 1 and 100
     - The user has 10 attempts to guess it
     - After each guess, print "Too high", "Too low", or "Correct!"
     - At the end, print how many attempts were used
-    
+
     Note: this is a simpler version than the full project in
     projects/beginner/02_number_guessing_game.py — the goal here
     is to practice loops, not build a full game.

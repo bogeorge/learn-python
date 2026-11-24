@@ -173,7 +173,7 @@ python projects/beginner/01_simple_calculator.py
 ### 3. Build your own:
 ```python
 # Simple text-based adventure game
-# Daily quote generator  
+# Daily quote generator
 # Unit converter (length, weight, etc.)
 ```
 

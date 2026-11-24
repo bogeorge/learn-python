@@ -24,7 +24,7 @@ def check_python_version():
     """Check if Python 3 is installed."""
     print("1. Checking Python version...")
     version = sys.version_info
-    
+
     if version.major < 3:
         print("❌ ERROR: Python 3 is required. Please install Python 3.6 or higher.")
         print(f"   Current version: {sys.version}")
@@ -41,9 +41,9 @@ def check_python_version():
 def check_virtualenv():
     """Check if virtual environment exists."""
     print("\n2. Checking virtual environment...")
-    
+
     venv_path = os.path.join(os.path.dirname(__file__), "venv")
-    
+
     if os.path.exists(venv_path):
         print("✅ Virtual environment already exists at 'venv/'")
         return True
@@ -56,23 +56,25 @@ def check_virtualenv():
 def create_virtualenv():
     """Create a virtual environment."""
     print("\nCreating virtual environment...")
-    
+
     try:
         # Check if venv module is available
-        subprocess.run([sys.executable, "-m", "venv", "--help"], 
-                      capture_output=True, check=True)
-        
+        subprocess.run(
+            [sys.executable, "-m", "venv", "--help"], capture_output=True, check=True
+        )
+
         # Create virtual environment
-        result = subprocess.run([sys.executable, "-m", "venv", "venv"], 
-                               capture_output=True, text=True)
-        
+        result = subprocess.run(
+            [sys.executable, "-m", "venv", "venv"], capture_output=True, text=True
+        )
+
         if result.returncode == 0:
             print("✅ Virtual environment created successfully.")
             return True
         else:
             print(f"❌ Failed to create virtual environment: {result.stderr}")
             return False
-            
+
     except subprocess.CalledProcessError:
         print("❌ venv module not available.")
         print("   On some systems, you might need to install python3-venv:")
@@ -87,18 +89,19 @@ def create_virtualenv():
 def check_pip():
     """Check if pip is installed and working."""
     print("\n3. Checking pip...")
-    
+
     try:
-        result = subprocess.run([sys.executable, "-m", "pip", "--version"], 
-                               capture_output=True, text=True)
-        
+        result = subprocess.run(
+            [sys.executable, "-m", "pip", "--version"], capture_output=True, text=True
+        )
+
         if result.returncode == 0:
             print(f"✅ pip is installed: {result.stdout.split()[1]}")
             return True
         else:
             print("❌ pip is not working properly.")
             return False
-            
+
     except Exception as e:
         print(f"❌ Error checking pip: {e}")
         return False
@@ -107,18 +110,21 @@ def check_pip():
 def upgrade_pip():
     """Upgrade pip to the latest version."""
     print("\nUpgrading pip...")
-    
+
     try:
-        result = subprocess.run([sys.executable, "-m", "pip", "install", "--upgrade", "pip"], 
-                               capture_output=True, text=True)
-        
+        result = subprocess.run(
+            [sys.executable, "-m", "pip", "install", "--upgrade", "pip"],
+            capture_output=True,
+            text=True,
+        )
+
         if result.returncode == 0:
             print("✅ pip upgraded successfully.")
             return True
         else:
             print(f"❌ Failed to upgrade pip: {result.stderr}")
             return False
-            
+
     except Exception as e:
         print(f"❌ Error upgrading pip: {e}")
         return False
@@ -127,28 +133,31 @@ def upgrade_pip():
 def install_basic_packages():
     """Install basic Python packages for learning."""
     print("\n4. Installing basic packages...")
-    
+
     packages = [
-        "ipython",      # Interactive Python shell
-        "black",        # Code formatter
-        "flake8",       # Linter
-        "pytest",       # Testing framework
+        "ipython",  # Interactive Python shell
+        "black",  # Code formatter
+        "flake8",  # Linter
+        "pytest",  # Testing framework
     ]
-    
+
     try:
         for package in packages:
             print(f"   Installing {package}...")
-            result = subprocess.run([sys.executable, "-m", "pip", "install", package], 
-                                   capture_output=True, text=True)
-            
+            result = subprocess.run(
+                [sys.executable, "-m", "pip", "install", package],
+                capture_output=True,
+                text=True,
+            )
+
             if result.returncode == 0:
                 print(f"   ✅ {package} installed")
             else:
                 print(f"   ❌ Failed to install {package}: {result.stderr}")
-                
+
         print("\n✅ Basic packages installed.")
         return True
-        
+
     except Exception as e:
         print(f"❌ Error installing packages: {e}")
         return False
@@ -159,11 +168,11 @@ def print_activation_instructions():
     print("\n" + "=" * 60)
     print("SETUP COMPLETE!")
     print("=" * 60)
-    
+
     print("\nTo activate your virtual environment:")
-    
+
     system = platform.system().lower()
-    
+
     if system == "windows":
         print("""
     In Command Prompt:
@@ -180,7 +189,7 @@ def print_activation_instructions():
     To deactivate:
         deactivate
         """)
-    
+
     print("\nOnce activated, your prompt should show (venv).")
     print("All Python packages will be installed in this environment.")
 
@@ -190,7 +199,7 @@ def print_next_steps():
     print("\n" + "=" * 60)
     print("NEXT STEPS")
     print("=" * 60)
-    
+
     print("""
 1. Read the learning plan:
    - cat PYTHON_LEARNING_PLAN.md
@@ -212,16 +221,16 @@ def print_next_steps():
 def create_progress_file():
     """Create a progress tracking file."""
     print("\n5. Creating progress tracking file...")
-    
+
     progress_path = os.path.join(os.path.dirname(__file__), "docs", "progress.md")
-    
+
     # Create docs directory if it doesn't exist
     os.makedirs(os.path.dirname(progress_path), exist_ok=True)
-    
+
     if os.path.exists(progress_path):
         print("✅ Progress file already exists.")
         return True
-    
+
     progress_content = """# Learning Progress Tracker
 
 ## Daily Log
@@ -288,7 +297,7 @@ Add any additional notes, insights, or reminders here.
 ---
 *Last updated: [Date]*
 """
-    
+
     try:
         with open(progress_path, "w") as f:
             f.write(progress_content)
@@ -302,43 +311,43 @@ Add any additional notes, insights, or reminders here.
 def main():
     """Main setup function."""
     print_header()
-    
+
     # Check Python version
     if not check_python_version():
         return
-    
+
     # Check/create virtual environment
     if not check_virtualenv():
         create = input("\nCreate virtual environment? (y/n): ").strip().lower()
-        if create == 'y':
+        if create == "y":
             if not create_virtualenv():
                 print("\n⚠️  Continuing without virtual environment...")
         else:
             print("\n⚠️  Continuing without virtual environment...")
-    
+
     # Check pip
     if not check_pip():
         print("\n⚠️  pip issues detected. Some features may not work.")
-    
+
     # Upgrade pip
     upgrade = input("\nUpgrade pip to latest version? (y/n): ").strip().lower()
-    if upgrade == 'y':
+    if upgrade == "y":
         upgrade_pip()
-    
+
     # Install packages
     install = input("\nInstall basic Python packages? (y/n): ").strip().lower()
-    if install == 'y':
+    if install == "y":
         install_basic_packages()
-    
+
     # Create progress file
     create_progress = input("\nCreate progress tracking file? (y/n): ").strip().lower()
-    if create_progress == 'y':
+    if create_progress == "y":
         create_progress_file()
-    
+
     # Print instructions
     print_activation_instructions()
     print_next_steps()
-    
+
     print("\n" + "=" * 60)
     print("Happy learning! 🐍")
     print("=" * 60)

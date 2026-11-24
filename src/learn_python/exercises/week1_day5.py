@@ -10,7 +10,7 @@ Exercises to practice nested loops, break/continue, and list basics.
 def exercise_1_nested_loops():
     """
     Use nested loops to print a times table grid for 1–5.
-    
+
     Expected output (partial):
         1   2   3   4   5
         2   4   6   8  10
@@ -38,14 +38,14 @@ def exercise_1_nested_loops():
 def exercise_2_pattern_printing():
     """
     Use nested loops to print two patterns.
-    
+
     Pattern 1 — right-angled triangle:
         *
         **
         ***
         ****
         *****
-    
+
     Pattern 2 — inverted triangle:
         *****
         ****
@@ -67,7 +67,7 @@ def exercise_2_pattern_printing():
 def exercise_3_break_and_continue():
     """
     Demonstrate break and continue.
-    
+
     1. Loop from 1 to 20. Skip multiples of 3 (continue).
        Stop entirely when you hit 15 (break).
     2. Keep asking the user to type a word until they type "quit".
@@ -98,7 +98,7 @@ def exercise_3_break_and_continue():
 def exercise_4_list_basics():
     """
     Demonstrate creating and working with lists.
-    
+
     1. Create a list of five fruits
     2. Access the first and last item
     3. Add an item with append()
@@ -158,7 +158,7 @@ def exercise_5_find_max_min():
 def mini_project_shopping_list():
     """
     A simple shopping list manager.
-    
+
     Commands:
       add <item>    — add an item to the list
       remove <item> — remove an item from the list
@@ -191,14 +191,18 @@ def mini_project_shopping_list():
                 print(f"  '{argument}' is already on the list.")
             else:
                 shopping_list.append(argument)
-                print(f"  Added '{argument}'. List now has {len(shopping_list)} item(s).")
+                print(
+                    f"  Added '{argument}'. List now has {len(shopping_list)} item(s)."
+                )
 
         elif command == "remove":
             if not argument:
                 print("  Usage: remove <item>")
             else:
                 # Case-insensitive removal
-                match = next((i for i in shopping_list if i.lower() == argument.lower()), None)
+                match = next(
+                    (i for i in shopping_list if i.lower() == argument.lower()), None
+                )
                 if match:
                     shopping_list.remove(match)
                     print(f"  Removed '{match}'.")

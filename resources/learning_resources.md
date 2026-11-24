@@ -137,17 +137,20 @@ my_list.append(4)
 my_dict = {"key": "value"}
 my_dict["new_key"] = "new_value"
 
+
 # Functions
 def my_function(param):
     return param * 2
+
 
 # Classes
 class MyClass:
     def __init__(self, name):
         self.name = name
-    
+
     def greet(self):
         return f"Hello, {self.name}"
+
 
 # File I/O
 with open("file.txt", "r") as f:
@@ -158,23 +161,23 @@ with open("file.txt", "r") as f:
 ```python
 # String operations
 text = "Hello World"
-len(text)           # Length: 11
-text.upper()        # "HELLO WORLD"
-text.lower()        # "hello world"
-text.split()        # ["Hello", "World"]
+len(text)  # Length: 11
+text.upper()  # "HELLO WORLD"
+text.lower()  # "hello world"
+text.split()  # ["Hello", "World"]
 
 # List operations
 numbers = [1, 2, 3, 4, 5]
-len(numbers)        # 5
-numbers[0]          # 1
-numbers[-1]         # 5
-numbers[1:3]        # [2, 3]
+len(numbers)  # 5
+numbers[0]  # 1
+numbers[-1]  # 5
+numbers[1:3]  # [2, 3]
 
 # Dictionary operations
 person = {"name": "Alice", "age": 30}
-person["name"]      # "Alice"
-person.keys()       # dict_keys(['name', 'age'])
-person.values()     # dict_values(['Alice', 30])
+person["name"]  # "Alice"
+person.keys()  # dict_keys(['name', 'age'])
+person.values()  # dict_values(['Alice', 30])
 ```
 
 ## Learning Tips
