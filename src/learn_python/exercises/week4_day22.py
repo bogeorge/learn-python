@@ -164,8 +164,8 @@ def exercise_3_binary_files():
         f.seek(200)
         byte_200 = f.read(1)
 
-    print(f"Byte at position 100: {list(byte_100)[0]}")
-    print(f"Byte at position 200: {list(byte_200)[0]}")
+    print(f"Byte at position 100: {next(iter(byte_100))}")
+    print(f"Byte at position 200: {next(iter(byte_200))}")
 
     # Clean up
     os.remove("data.bin")
@@ -187,7 +187,7 @@ def exercise_4_file_exceptions():
     print("1. Handling FileNotFoundError:")
     try:
         with open("nonexistent.txt", "r") as f:
-            content = f.read()
+            f.read()
     except FileNotFoundError:
         print("  File doesn't exist. Creating it...")
         with open("nonexistent.txt", "w") as f:
@@ -212,7 +212,7 @@ def exercise_4_file_exceptions():
         os.makedirs("test_dir", exist_ok=True)
         # Try to open directory as file
         with open("test_dir", "r") as f:
-            content = f.read()
+            f.read()
     except IsADirectoryError:
         print("  Can't open a directory as a file")
 
@@ -223,7 +223,6 @@ def exercise_4_file_exceptions():
         f = open("temp_file.txt", "w")
         f.write("Some data")
         # Simulate an error
-        x = 1 / 0  # Division by zero
     except ZeroDivisionError:
         print("  Math error occurred")
     finally:

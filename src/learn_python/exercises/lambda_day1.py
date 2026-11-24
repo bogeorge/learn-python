@@ -400,7 +400,7 @@ def exercise_4_logging_and_monitoring():
                 self.logger.addHandler(handler)
                 self.logger.setLevel(logging.INFO)
 
-        def _log(self, level: str, message: str, extra: dict = None):
+        def _log(self, level: str, message: str, extra: dict | None = None):
             """Log structured message."""
             log_entry = {
                 "timestamp": datetime.utcnow().isoformat(),
@@ -411,17 +411,17 @@ def exercise_4_logging_and_monitoring():
             }
             self.logger.info(json.dumps(log_entry))
 
-        def info(self, message: str, extra: dict = None):
+        def info(self, message: str, extra: dict | None = None):
             self._log("INFO", message, extra)
 
-        def warn(self, message: str, extra: dict = None):
+        def warn(self, message: str, extra: dict | None = None):
             self._log("WARN", message, extra)
 
-        def error(self, message: str, extra: dict = None):
+        def error(self, message: str, extra: dict | None = None):
             self._log("ERROR", message, extra)
 
         def metric(
-            self, name: str, value: float, unit: str = "Count", extra: dict = None
+            self, name: str, value: float, unit: str = "Count", extra: dict | None = None
         ):
             """Log a custom metric."""
             metric_data = {

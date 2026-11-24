@@ -80,8 +80,8 @@ def exercise_2_dictionaries_basics():
     # Creating dictionaries
     empty_dict = {}
     person = {"name": "Alice", "age": 30, "city": "New York"}
-    numbers = dict(one=1, two=2, three=3)
-    from_list = dict([("a", 1), ("b", 2), ("c", 3)])
+    numbers = {"one": 1, "two": 2, "three": 3}
+    from_list = {"a": 1, "b": 2, "c": 3}
 
     print("Dictionary basics:")
     print(f"  Empty dict: {empty_dict}")

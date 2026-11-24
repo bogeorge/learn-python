@@ -563,7 +563,7 @@ def exercise_5_context_managers():
     # Using Timer context manager
     print("\n  Timer context manager:")
     with Timer("List comprehension"):
-        squares = [x**2 for x in range(10000)]
+        [x**2 for x in range(10000)]
 
     # Using FileHandler context manager
     print("\n  FileHandler context manager:")
@@ -602,14 +602,13 @@ def exercise_5_context_managers():
 
     # This will be suppressed
     with suppress_exception(ZeroDivisionError):
-        result = 10 / 0
         print("    This won't print")
     print("    ZeroDivisionError was suppressed")
 
     # This will NOT be suppressed (different exception type)
     try:
         with suppress_exception(ValueError):
-            result = int("not a number")
+            int("not a number")
     except ValueError:
         print("    ValueError was NOT suppressed (wrong exception type)")
 

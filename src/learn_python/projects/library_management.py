@@ -786,8 +786,8 @@ def main():
 
     print("\nDemo borrowing system:")
     # Get first member and book
-    member_id = list(library.members.keys())[0]
-    book_isbn = list(library.books.keys())[0]
+    member_id = next(iter(library.members.keys()))
+    book_isbn = next(iter(library.books.keys()))
 
     member = library.get_member(member_id)
     book = library.get_book(book_isbn)

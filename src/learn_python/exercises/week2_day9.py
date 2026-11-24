@@ -55,7 +55,6 @@ def exercise_2_variable_scope():
     """
 
     # Global variable
-    global_counter = 0
 
     def increment_local():
         """Create a local variable (doesn't affect global)."""
@@ -130,7 +129,7 @@ def exercise_3_lambda_functions():
     # Lambda in list comprehensions
     numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-    squared_numbers = list(map(lambda x: x**2, numbers))
+    squared_numbers = [x**2 for x in numbers]
     even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
 
     print(f"\n  Original numbers: {numbers}")

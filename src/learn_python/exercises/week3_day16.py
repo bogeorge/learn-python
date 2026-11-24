@@ -519,7 +519,7 @@ def exercise_4_shapes_hierarchy():
 
         def describe(self):
             """Override describe for rectangles."""
-            base_desc = super().describe()
+            super().describe()
             shape = "Square" if self.is_square() else "Rectangle"
             return f"A {self.color} {shape} ({self.width}x{self.height})"
 

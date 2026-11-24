@@ -156,9 +156,9 @@ def exercise_3_string_formatting():
 
     # Old-style % formatting
     print("\n  % formatting:")
-    print("    Basic: Hello, %s!" % name)
+    print(f"    Basic: Hello, {name}!")
     print("    Multiple: %s is %d years old." % (name, age))
-    print("    Float: π = %.3f" % pi)
+    print(f"    Float: π = {pi:.3f}")
 
     # Advanced formatting examples
     print("\n  Advanced formatting:")
