@@ -143,10 +143,8 @@ def exercise_5_find_max_min():
     smallest = numbers[0]
 
     for num in numbers:
-        if num > largest:
-            largest = num
-        if num < smallest:
-            smallest = num
+        largest = max(largest, num)
+        smallest = min(smallest, num)
 
     print(f"\nManual search  → max: {largest}, min: {smallest}")
     print(f"Built-in check → max: {max(numbers)}, min: {min(numbers)}")

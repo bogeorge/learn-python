@@ -1,7 +1,7 @@
-import sys
-import time
 import functools
 import json
+import sys
+import time
 
 """
 Week 4, Day 25: Decorators
@@ -524,7 +524,6 @@ def exercise_5_builtin_decorators():
     print()
 
     # functools.lru_cache
-    import math
 
     @functools.lru_cache(maxsize=32)
     def fibonacci(n):

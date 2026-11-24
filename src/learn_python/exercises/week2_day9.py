@@ -204,7 +204,7 @@ def exercise_5_advanced_lambda_usage():
 
     sum_result = reduce(lambda x, y: x + y, numbers)
     product_result = reduce(lambda x, y: x * y, numbers)
-    max_result = reduce(lambda x, y: x if x > y else y, numbers)
+    max_result = reduce(lambda x, y: max(y, x), numbers)
 
     print("Advanced lambda usage:")
     print(f"  Numbers: {numbers}")
@@ -221,7 +221,7 @@ def exercise_5_advanced_lambda_usage():
     triple = multiplier_factory(3)
     times_ten = multiplier_factory(10)
 
-    print(f"\n  Function factory:")
+    print("\n  Function factory:")
     print(f"    double(5) = {double(5)}")
     print(f"    triple(5) = {triple(5)}")
     print(f"    times_ten(5) = {times_ten(5)}")
@@ -234,7 +234,7 @@ def exercise_5_advanced_lambda_usage():
     add_five = curry_add(5)
     add_ten = curry_add(10)
 
-    print(f"\n  Curried functions:")
+    print("\n  Curried functions:")
     print(f"    add_five(3) = {add_five(3)}")
     print(f"    add_ten(7) = {add_ten(7)}")
 

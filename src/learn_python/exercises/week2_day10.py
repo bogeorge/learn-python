@@ -365,31 +365,31 @@ def mini_project_student_grade_analyzer():
 
             elif choice == "1":
                 filtered = filter_students_by_grade(min_grade=90)
-                print(f"\nStudents with A grades (90+):")
+                print("\nStudents with A grades (90+):")
                 for s in filtered:
                     print(f"  {s['name']}: {s['average']}")
 
             elif choice == "2":
                 filtered = filter_students_by_grade(min_grade=80, max_grade=89.99)
-                print(f"\nStudents with B grades (80-89):")
+                print("\nStudents with B grades (80-89):")
                 for s in filtered:
                     print(f"  {s['name']}: {s['average']}")
 
             elif choice == "3":
                 filtered = filter_students_by_grade(min_grade=70, max_grade=79.99)
-                print(f"\nStudents with C grades (70-79):")
+                print("\nStudents with C grades (70-79):")
                 for s in filtered:
                     print(f"  {s['name']}: {s['average']}")
 
             elif choice == "4":
                 filtered = filter_students_by_grade(min_grade=60, max_grade=69.99)
-                print(f"\nStudents with D grades (60-69):")
+                print("\nStudents with D grades (60-69):")
                 for s in filtered:
                     print(f"  {s['name']}: {s['average']}")
 
             elif choice == "5":
                 filtered = filter_students_by_grade(max_grade=59.99)
-                print(f"\nStudents with F grades (<60):")
+                print("\nStudents with F grades (<60):")
                 for s in filtered:
                     print(f"  {s['name']}: {s['average']}")
 

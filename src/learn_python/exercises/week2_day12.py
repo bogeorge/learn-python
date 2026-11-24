@@ -83,7 +83,7 @@ def exercise_2_string_methods():
     print(f"  Original sentence: '{sentence}'")
 
     # Basic string methods
-    print(f"\n  Basic methods:")
+    print("\n  Basic methods:")
     print(f"    strip(): '{text.strip()}'")
     print(f"    lower(): '{text.lower()}'")
     print(f"    upper(): '{text.upper()}'")
@@ -91,7 +91,7 @@ def exercise_2_string_methods():
     print(f"    capitalize(): '{sentence.capitalize()}'")
 
     # String searching
-    print(f"\n  Searching:")
+    print("\n  Searching:")
     print(f"    find('Python'): {text.find('Python')}")
     print(f"    find('Java'): {text.find('Java')}")  # Returns -1
     print(f"    index('World'): {text.index('World')}")
@@ -100,7 +100,7 @@ def exercise_2_string_methods():
     print(f"    endswith('World!'): {text.strip().endswith('World!')}")
 
     # String checking
-    print(f"\n  Checking:")
+    print("\n  Checking:")
     alpha_text = "Hello"
     numeric_text = "12345"
     mixed_text = "Hello123"
@@ -111,7 +111,7 @@ def exercise_2_string_methods():
     print(f"    'Hello World'.isspace(): {'   '.isspace()}")
 
     # String transformations
-    print(f"\n  Transformations:")
+    print("\n  Transformations:")
     words = sentence.split()
     print(f"    split(): {words}")
     print(f"    join(): {'-'.join(words)}")
@@ -141,27 +141,27 @@ def exercise_3_string_formatting():
     print("String formatting:")
 
     # f-strings (modern, preferred)
-    print(f"  f-strings:")
+    print("  f-strings:")
     print(f"    Basic: Hello, {name}!")
     print(f"    Expression: In 5 years, {name} will be {age + 5} years old.")
     print(f"    Formatting: Salary: ${salary:,.2f}")
     print(f"    Alignment: |{name:<10}| |{name:>10}| |{name:^10}|")
 
     # str.format() method
-    print(f"\n  str.format():")
-    print("    Basic: Hello, {}!".format(name))
-    print("    Positional: {0} is {1} years old.".format(name, age))
-    print("    Named: {n} earns ${s:,.2f}".format(n=name, s=salary))
-    print("    Formatting: π = {:.4f}".format(pi))
+    print("\n  str.format():")
+    print(f"    Basic: Hello, {name}!")
+    print(f"    Positional: {name} is {age} years old.")
+    print(f"    Named: {name} earns ${salary:,.2f}")
+    print(f"    Formatting: π = {pi:.4f}")
 
     # Old-style % formatting
-    print(f"\n  % formatting:")
+    print("\n  % formatting:")
     print("    Basic: Hello, %s!" % name)
     print("    Multiple: %s is %d years old." % (name, age))
     print("    Float: π = %.3f" % pi)
 
     # Advanced formatting examples
-    print(f"\n  Advanced formatting:")
+    print("\n  Advanced formatting:")
 
     # Padding and alignment
     for i in range(1, 6):
@@ -199,7 +199,7 @@ def exercise_4_text_processing():
     print(f"  Original text: {text}")
 
     # String slicing
-    print(f"\n  Slicing:")
+    print("\n  Slicing:")
     print(f"    First 10 chars: '{text[:10]}'")
     print(f"    Last 15 chars: '{text[-15:]}'")
     print(f"    Every other char: '{text[::2]}'")
@@ -210,7 +210,7 @@ def exercise_4_text_processing():
     It preserves line breaks and indentation.
     Useful for documentation and formatted output."""
 
-    print(f"\n  Multi-line string:")
+    print("\n  Multi-line string:")
     print(multiline)
 
     # Line splitting and joining
@@ -220,14 +220,14 @@ def exercise_4_text_processing():
         print(f"    Line {i}: '{line.strip()}'")
 
     # Character encoding
-    print(f"\n  Character encoding:")
+    print("\n  Character encoding:")
     encoded = text.encode("utf-8")
     print(f"    UTF-8 encoded: {encoded[:20]}...")
     decoded = encoded.decode("utf-8")
     print(f"    Decoded (first 30 chars): '{decoded[:30]}'")
 
     # Regular expressions basics
-    print(f"\n  Regular expressions:")
+    print("\n  Regular expressions:")
 
     # Find all occurrences of "Python"
     python_matches = re.findall(r"Python", text, re.IGNORECASE)
@@ -289,7 +289,7 @@ def exercise_5_set_and_string_combinations():
     pangram_chars = set(pangram.replace(" ", "").lower())
 
     missing_letters = alphabet - pangram_chars
-    print(f"\n  Pangram analysis:")
+    print("\n  Pangram analysis:")
     print(f"    Letters in pangram: {len(pangram_chars)}")
     print(f"    Missing letters: {sorted(missing_letters)}")
     print(f"    Is perfect pangram? {len(missing_letters) == 0}")
@@ -298,7 +298,7 @@ def exercise_5_set_and_string_combinations():
     words1 = set(text1.split())
     words2 = set(text2.split())
 
-    print(f"\n  Word analysis:")
+    print("\n  Word analysis:")
     print(f"    Words in text1: {words1}")
     print(f"    Words in text2: {words2}")
     print(f"    Common words: {words1 & words2}")
@@ -429,7 +429,7 @@ def mini_project_word_counter():
 
         elif choice == "1":
             results = analyze_text(sample_text)
-            print(f"\nText Analysis Results:")
+            print("\nText Analysis Results:")
             print(f"  Characters: {results['characters']}")
             print(f"  Characters (no spaces): {results['characters_no_spaces']}")
             print(f"  Words: {results['words']}")
@@ -452,7 +452,7 @@ def mini_project_word_counter():
             if lines:
                 custom_text = "\n".join(lines)
                 results = analyze_text(custom_text)
-                print(f"\nCustom Text Analysis:")
+                print("\nCustom Text Analysis:")
                 print(f"  Words: {results['words']}")
                 print(f"  Unique words: {results['unique_words']}")
                 print(f"  Characters: {results['characters']}")
@@ -464,7 +464,7 @@ def mini_project_word_counter():
             text2 = input("> ")
 
             comparison = compare_texts(text1, text2)
-            print(f"\nText Comparison:")
+            print("\nText Comparison:")
             print(f"  Common words: {len(comparison['common_words'])}")
             print(f"  Unique to text1: {len(comparison['unique_to_text1'])}")
             print(f"  Unique to text2: {len(comparison['unique_to_text2'])}")
@@ -475,7 +475,7 @@ def mini_project_word_counter():
 
         elif choice == "4":
             results = analyze_text(sample_text)
-            print(f"\nTop 10 most common words:")
+            print("\nTop 10 most common words:")
             for word, count in results["most_common_words"]:
                 print(f"  {word}: {count}")
 
@@ -492,7 +492,7 @@ def mini_project_word_counter():
             cleaned = clean_text(sample_text).split()
             word_set = set(cleaned)
 
-            print(f"\nSet operations on sample text:")
+            print("\nSet operations on sample text:")
             print(f"  Total unique words: {len(word_set)}")
 
             # Words starting with 'p'

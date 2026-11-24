@@ -9,7 +9,6 @@ import json
 import os
 import sys
 from datetime import datetime
-from typing import List, Dict, Optional
 
 
 class TodoList:
@@ -18,16 +17,16 @@ class TodoList:
     def __init__(self, filename: str = "todo_data.json"):
         """Initialize the to-do list with optional file persistence."""
         self.filename = filename
-        self.tasks: List[Dict] = self.load_tasks()
+        self.tasks: list[dict] = self.load_tasks()
         self.next_id = max([task["id"] for task in self.tasks], default=0) + 1
 
-    def load_tasks(self) -> List[Dict]:
+    def load_tasks(self) -> list[dict]:
         """Load tasks from JSON file."""
         try:
             if os.path.exists(self.filename):
                 with open(self.filename, "r") as f:
                     return json.load(f)
-        except (json.JSONDecodeError, IOError) as e:
+        except (OSError, json.JSONDecodeError) as e:
             print(f"Error loading tasks: {e}")
         return []
 
@@ -36,7 +35,7 @@ class TodoList:
         try:
             with open(self.filename, "w") as f:
                 json.dump(self.tasks, f, indent=2)
-        except IOError as e:
+        except OSError as e:
             print(f"Error saving tasks: {e}")
 
     def add_task(
@@ -44,7 +43,7 @@ class TodoList:
         description: str,
         priority: str = "medium",
         category: str = "general",
-        due_date: Optional[str] = None,
+        due_date: str | None = None,
     ):
         """Add a new task to the list."""
         task = {
@@ -108,8 +107,8 @@ class TodoList:
     def view_tasks(
         self,
         show_completed: bool = True,
-        filter_by: Optional[str] = None,
-        filter_value: Optional[str] = None,
+        filter_by: str | None = None,
+        filter_value: str | None = None,
     ):
         """View tasks with optional filtering."""
         filtered_tasks = self.tasks.copy()
@@ -384,12 +383,12 @@ def main():
                     task_id = int(input("Enter task ID to edit: "))
 
                     print("\nLeave blank to keep current value.")
-                    description = input(f"New description: ").strip()
+                    description = input("New description: ").strip()
                     priority = (
-                        input(f"New priority (high/medium/low): ").strip().lower()
+                        input("New priority (high/medium/low): ").strip().lower()
                     )
-                    category = input(f"New category: ").strip()
-                    due_date = input(f"New due date (YYYY-MM-DD): ").strip()
+                    category = input("New category: ").strip()
+                    due_date = input("New due date (YYYY-MM-DD): ").strip()
 
                     updates = {}
                     if description:

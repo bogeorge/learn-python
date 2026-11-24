@@ -1,6 +1,6 @@
-import sys
-import os
 import importlib.util
+import os
+import sys
 
 """
 Week 3, Day 19: Modules & Packages
@@ -55,8 +55,8 @@ def exercise_1_import_statements():
 
     # Demonstrate actual imports
     import math
-    from datetime import datetime, date
     import random as rnd
+    from datetime import date
 
     print("\n  6. Actual import examples:")
     print(f"     math.sqrt(25) = {math.sqrt(25)}")
@@ -135,13 +135,13 @@ if __name__ == "__main__":
         geometry = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(geometry)
 
-        print(f"\n  1. Imported geometry module:")
+        print("\n  1. Imported geometry module:")
         print(f"     Circle area (radius=3): {geometry.circle_area(3):.2f}")
         print(f"     Rectangle perimeter (4x5): {geometry.rectangle_perimeter(4, 5)}")
         print(f"     Triangle area (base=6, height=4): {geometry.triangle_area(6, 4)}")
 
         # Method 2: Adding to sys.path and importing
-        print(f"\n  2. Module attributes:")
+        print("\n  2. Module attributes:")
         print(f"     Module name: {geometry.__name__}")
         print(f"     File location: {geometry.__file__}")
         print(f"     Module documentation: {geometry.__doc__.strip()}")
@@ -157,7 +157,7 @@ if __name__ == "__main__":
         print("  Demonstrating module concepts instead...")
 
         # Fallback demonstration
-        print(f"\n  Module creation concepts:")
+        print("\n  Module creation concepts:")
         print("  1. Create a .py file with functions and classes")
         print("  2. Save it in your project directory or Python path")
         print("  3. Import it using: import module_name")
@@ -432,16 +432,16 @@ def power(base, exponent):
         # Import and use the package
         import mymath
 
-        print(f"\n    Using the package:")
+        print("\n    Using the package:")
         print(f"      mymath.circle_area(5): {mymath.circle_area(5):.2f}")
         print(f"      mymath.rectangle_area(4, 6): {mymath.rectangle_area(4, 6)}")
         print(f"      mymath.add(10, 20): {mymath.add(10, 20)}")
 
         # Import submodules directly
-        from mymath.geometry import circles, rectangles
         from mymath.algebra import basic
+        from mymath.geometry import circles, rectangles
 
-        print(f"\n    Using submodules:")
+        print("\n    Using submodules:")
         print(
             f"      circles.circle_circumference(3): {circles.circle_circumference(3):.2f}"
         )
@@ -574,15 +574,13 @@ def mini_project_modular_game_application():
         def take_damage(self, damage):
             """Take damage."""
             self.health -= damage
-            if self.health < 0:
-                self.health = 0
+            self.health = max(self.health, 0)
             return self.health > 0
 
         def heal(self, amount):
             """Heal the player."""
             self.health += amount
-            if self.health > 100:
-                self.health = 100
+            self.health = min(self.health, 100)
 
         def add_item(self, item):
             """Add item to inventory."""
@@ -718,7 +716,7 @@ def mini_project_modular_game_application():
     # Give player starting items
     player.add_item(items[0])
     player.add_item(items[1])
-    print(f"\nStarting items:")
+    print("\nStarting items:")
     for item in player.inventory:
         print(f"  {item}")
 
@@ -746,7 +744,7 @@ def mini_project_modular_game_application():
 
         # Offer to use items before battle
         if player.inventory:
-            print(f"\nItems available:")
+            print("\nItems available:")
             for i, item in enumerate(player.inventory, 1):
                 print(f"  {i}. {item}")
 
@@ -768,7 +766,7 @@ def mini_project_modular_game_application():
             print(f"\nPlayer status: {player}")
 
             if enemy_index < len(enemies):
-                continue_battle = input(f"\nContinue to next enemy? (y/n): ")
+                continue_battle = input("\nContinue to next enemy? (y/n): ")
                 if continue_battle.lower() != "y":
                     game_running = False
             else:

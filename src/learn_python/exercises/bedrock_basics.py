@@ -12,7 +12,7 @@ Note: To run real Bedrock calls, you'll need:
 """
 
 import json
-from typing import Dict, Any, List
+
 # import boto3  # Will fail without AWS config - that's OK for learning
 
 
@@ -23,7 +23,7 @@ class MockBedrockClient:
     """
 
     @staticmethod
-    def invoke_model(model_id: str, body: Dict) -> Dict:
+    def invoke_model(model_id: str, body: dict) -> dict:
         """
         Simulate Bedrock model invocation.
 
@@ -48,7 +48,7 @@ class MockBedrockClient:
             return MockBedrockClient._mock_generic_response(prompt, max_tokens)
 
     @staticmethod
-    def _mock_claude_response(prompt: str, max_tokens: int) -> Dict:
+    def _mock_claude_response(prompt: str, max_tokens: int) -> dict:
         """Mock Anthropic Claude response."""
         responses = [
             f"Hello! I'm Claude, an AI assistant created by Anthropic. You asked: '{prompt}'",
@@ -69,7 +69,7 @@ class MockBedrockClient:
         }
 
     @staticmethod
-    def _mock_titan_response(prompt: str, max_tokens: int) -> Dict:
+    def _mock_titan_response(prompt: str, max_tokens: int) -> dict:
         """Mock Amazon Titan response."""
         return {
             "results": [
@@ -82,7 +82,7 @@ class MockBedrockClient:
         }
 
     @staticmethod
-    def _mock_llama_response(prompt: str, max_tokens: int) -> Dict:
+    def _mock_llama_response(prompt: str, max_tokens: int) -> dict:
         """Mock Meta Llama response."""
         return {
             "generation": f"[Llama 2] Your input: '{prompt}'. "
@@ -91,7 +91,7 @@ class MockBedrockClient:
         }
 
     @staticmethod
-    def _mock_generic_response(prompt: str, max_tokens: int) -> Dict:
+    def _mock_generic_response(prompt: str, max_tokens: int) -> dict:
         """Mock generic model response."""
         return {
             "text": f"Mock Bedrock response to: '{prompt}'. "
@@ -314,7 +314,7 @@ def exercise_2_bedrock_in_lambda():
                 "body": json.dumps({"error": "Invalid JSON in request body"}),
             }
         except Exception as e:
-            print(f"Unexpected error: {str(e)}")
+            print(f"Unexpected error: {e!s}")
             return {
                 "statusCode": 500,
                 "body": json.dumps({"error": "Internal server error"}),
@@ -395,26 +395,22 @@ def exercise_3_bedrock_error_handling():
     class BedrockError(Exception):
         """Base exception for Bedrock-related errors."""
 
-        pass
 
     class ModelNotAvailableError(BedrockError):
         """Raised when requested model is not available."""
 
-        pass
 
     class RateLimitError(BedrockError):
         """Raised when rate limit is exceeded."""
 
-        pass
 
     class InvalidRequestError(BedrockError):
         """Raised when request is malformed."""
 
-        pass
 
     def safe_bedrock_invocation(
         prompt: str, model_id: str, max_retries: int = 3
-    ) -> Dict:
+    ) -> dict:
         """
         Safely invoke Bedrock with error handling and retries.
 
@@ -430,14 +426,13 @@ def exercise_3_bedrock_error_handling():
         # For learning, we'll simulate different error scenarios
 
         import random
-        import time
 
         # Simulate different failure scenarios
         scenario = random.choice(
             ["success", "rate_limit", "model_unavailable", "invalid_request"]
         )
 
-        print(f"  Attempting Bedrock invocation...")
+        print("  Attempting Bedrock invocation...")
         print(f"  Model: {model_id}, Prompt: '{prompt[:30]}...'")
         print(f"  Simulated scenario: {scenario}")
 
@@ -603,7 +598,7 @@ def mini_project_ai_chatbot_lambda():
             self.conversations = {}
             self.max_messages = max_messages
 
-        def get_conversation(self, session_id: str) -> List[Dict]:
+        def get_conversation(self, session_id: str) -> list[dict]:
             """Get conversation history for a session."""
             return self.conversations.get(session_id, [])
 
@@ -626,7 +621,7 @@ def mini_project_ai_chatbot_lambda():
                     -self.max_messages :
                 ]
 
-    def build_conversation_prompt(messages: List[Dict]) -> str:
+    def build_conversation_prompt(messages: list[dict]) -> str:
         """Build a prompt from conversation history."""
         prompt_parts = []
 

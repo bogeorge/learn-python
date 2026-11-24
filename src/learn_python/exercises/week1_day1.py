@@ -162,7 +162,7 @@ def mini_project_temperature_converter():
     kelvin = celsius + 273.15
 
     # Display results
-    print(f"\nTemperature Conversion Results:")
+    print("\nTemperature Conversion Results:")
     print(f"Celsius: {celsius}°C")
     print(f"Fahrenheit: {fahrenheit}°F")
     print(f"Kelvin: {kelvin}K")

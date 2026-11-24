@@ -154,7 +154,7 @@ def exercise_3_dictionary_operations():
         },
     }
 
-    print(f"\n  Nested dictionary - students:")
+    print("\n  Nested dictionary - students:")
     for name, info in students.items():
         print(f"    {name}: Age={info['age']}, Math grade={info['grades']['math']}")
 
@@ -164,7 +164,7 @@ def exercise_3_dictionary_operations():
     dict3 = {"d": 5}
 
     merged = {**dict1, **dict2, **dict3}
-    print(f"\n  Merged dictionaries:")
+    print("\n  Merged dictionaries:")
     print(f"    dict1: {dict1}")
     print(f"    dict2: {dict2}")
     print(f"    dict3: {dict3}")
@@ -247,7 +247,7 @@ def exercise_5_dictionary_advanced():
     3. Ordered dictionaries
     4. Dictionary with complex keys
     """
-    from collections import defaultdict, Counter, OrderedDict
+    from collections import Counter, OrderedDict, defaultdict
 
     # Default dictionary
     print("Advanced dictionary techniques:")
@@ -289,7 +289,7 @@ def exercise_5_dictionary_advanced():
     ordered["a"] = 1
     ordered["m"] = 13
 
-    print(f"\n  OrderedDict maintains insertion order:")
+    print("\n  OrderedDict maintains insertion order:")
     for k, v in ordered.items():
         print(f"    {k}: {v}")
 
@@ -299,7 +299,7 @@ def exercise_5_dictionary_advanced():
     coordinate_map[(1, 2)] = "Point A"
     coordinate_map[(3, 4)] = "Point B"
 
-    print(f"\n  Dictionary with tuple keys:")
+    print("\n  Dictionary with tuple keys:")
     for coord, label in coordinate_map.items():
         print(f"    {coord} -> {label}")
 

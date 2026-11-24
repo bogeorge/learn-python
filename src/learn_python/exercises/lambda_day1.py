@@ -9,7 +9,7 @@ Run them locally to understand the concepts before deploying to AWS.
 import json
 import os
 from datetime import datetime
-from typing import Dict, Any
+from typing import Any
 
 
 def exercise_1_lambda_handler_pattern():
@@ -24,7 +24,7 @@ def exercise_1_lambda_handler_pattern():
     """
 
     # Simulate a Lambda handler
-    def lambda_handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
+    def lambda_handler(event: dict[str, Any], context: Any) -> dict[str, Any]:
         """
         Basic Lambda handler - this is what AWS Lambda executes.
 
@@ -186,7 +186,6 @@ def exercise_3_error_handling():
     class LambdaError(Exception):
         """Custom exception for Lambda errors."""
 
-        pass
 
     def lambda_handler_with_errors(event, context):
         """
@@ -263,7 +262,7 @@ def exercise_3_error_handling():
                 "body": json.dumps(
                     {
                         "success": False,
-                        "error": f"Invalid JSON: {str(e)}",
+                        "error": f"Invalid JSON: {e!s}",
                         "errorType": "ParseError",
                         "timestamp": datetime.utcnow().isoformat(),
                     }
@@ -273,7 +272,7 @@ def exercise_3_error_handling():
         except Exception as e:
             # Unexpected error - log and return generic message
             # In real Lambda, this would log to CloudWatch
-            print(f"UNEXPECTED ERROR: {type(e).__name__}: {str(e)}")
+            print(f"UNEXPECTED ERROR: {type(e).__name__}: {e!s}")
 
             return {
                 "statusCode": 500,
@@ -401,7 +400,7 @@ def exercise_4_logging_and_monitoring():
                 self.logger.addHandler(handler)
                 self.logger.setLevel(logging.INFO)
 
-        def _log(self, level: str, message: str, extra: Dict = None):
+        def _log(self, level: str, message: str, extra: dict = None):
             """Log structured message."""
             log_entry = {
                 "timestamp": datetime.utcnow().isoformat(),
@@ -412,17 +411,17 @@ def exercise_4_logging_and_monitoring():
             }
             self.logger.info(json.dumps(log_entry))
 
-        def info(self, message: str, extra: Dict = None):
+        def info(self, message: str, extra: dict = None):
             self._log("INFO", message, extra)
 
-        def warn(self, message: str, extra: Dict = None):
+        def warn(self, message: str, extra: dict = None):
             self._log("WARN", message, extra)
 
-        def error(self, message: str, extra: Dict = None):
+        def error(self, message: str, extra: dict = None):
             self._log("ERROR", message, extra)
 
         def metric(
-            self, name: str, value: float, unit: str = "Count", extra: Dict = None
+            self, name: str, value: float, unit: str = "Count", extra: dict = None
         ):
             """Log a custom metric."""
             metric_data = {
@@ -491,7 +490,7 @@ def exercise_4_logging_and_monitoring():
                 is_valid = data.get("isValid", False)
 
                 if not is_valid:
-                    logger.warn(
+                    logger.warning(
                         "Validation failed",
                         {"data": data, "reason": "Invalid flag set to false"},
                     )
@@ -530,7 +529,7 @@ def exercise_4_logging_and_monitoring():
         except Exception as e:
             # Log error
             logger.error(
-                f"Lambda execution failed: {str(e)}",
+                f"Lambda execution failed: {e!s}",
                 {
                     "errorType": type(e).__name__,
                     "stackTrace": "...",  # In real code, would include traceback

@@ -145,7 +145,7 @@ def mini_project_guessing_game():
     attempts = 0
     guessed = False
 
-    print(f"I've picked a number between 1 and 100.")
+    print("I've picked a number between 1 and 100.")
     print(f"You have {max_attempts} attempts.\n")
 
     while attempts < max_attempts:

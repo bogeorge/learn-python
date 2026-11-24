@@ -187,21 +187,21 @@ def exercise_2_encapsulation():
     print(f"  Initial balance: ${account.get_balance():.2f}")
 
     # Test operations with wrong PIN
-    print(f"\n  Test with wrong PIN:")
+    print("\n  Test with wrong PIN:")
     print(f"    Deposit: {account.deposit(100, '1111')}")
 
     # Test with correct PIN
-    print(f"\n  Test with correct PIN:")
+    print("\n  Test with correct PIN:")
     print(f"    {account.set_pin('0000', '1234')}")
     print(f"    {account.deposit(500, '1234')}")
     print(f"    {account.withdraw(200, '1234')}")
 
     # Get statement
-    print(f"\n  Account statement:")
+    print("\n  Account statement:")
     print(account.get_statement("1234"))
 
     # Demonstrate access restrictions
-    print(f"\n  Access demonstration:")
+    print("\n  Access demonstration:")
     print(f"    Public attribute (account_number): {account.account_number}")
     print(
         f"    Protected attribute (_balance): ${account._balance:.2f} (accessible but shouldn't be)"
@@ -209,7 +209,7 @@ def exercise_2_encapsulation():
     print(f"    Transaction count via getter: {account.get_transaction_count()}")
 
     # Try to access private attribute from outside
-    print(f"\n  Attempting to access private attributes from outside:")
+    print("\n  Attempting to access private attributes from outside:")
     try:
         # This will fail due to name mangling
         print(f"    account.__pin: {account.__pin}")
@@ -354,14 +354,14 @@ def exercise_3_property_decorators():
     print(f"    After setting width=6, height=4: {rect}")
 
     # Try to set read-only property
-    print(f"\n    Trying to set area (read-only):")
+    print("\n    Trying to set area (read-only):")
     try:
         rect.area = 100  # This will fail
     except AttributeError as e:
         print(f"      Error: {e}")
 
     # Validation example
-    print(f"\n    Testing validation:")
+    print("\n    Testing validation:")
     try:
         rect.width = -5
     except ValueError as e:
@@ -651,7 +651,7 @@ def exercise_5_readonly_properties():
     circle = Circle(5)
     print(f"    Created: {circle}")
 
-    print(f"\n    Trying to modify read-only properties:")
+    print("\n    Trying to modify read-only properties:")
     try:
         circle.radius = 10  # This will fail
     except AttributeError as e:
@@ -671,12 +671,12 @@ def exercise_5_readonly_properties():
 
     # Create new point (immutability)
     new_point = point.translate(2, -1)
-    print(f"\n    After translate(2, -1):")
+    print("\n    After translate(2, -1):")
     print(f"      Original: {point}")
     print(f"      New point: {new_point}")
     print(f"      New quadrant: {new_point.quadrant}")
 
-    print(f"\n    Trying to modify immutable point:")
+    print("\n    Trying to modify immutable point:")
     try:
         point.x = 10  # This will fail
     except AttributeError as e:
@@ -877,7 +877,7 @@ def mini_project_employee_management_system():
         new_employee = Employee(name, emp_id, department, base_salary)
         employees[emp_id] = new_employee
 
-        print(f"Employee created successfully!")
+        print("Employee created successfully!")
         print(f"{new_employee.get_summary()}")
 
     print(f"Loaded {len(employees)} employee(s).")

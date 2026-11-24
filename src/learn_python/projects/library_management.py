@@ -12,9 +12,8 @@ A complete library management system with:
 
 import json
 import os
-from datetime import datetime, timedelta, date
 import uuid
-from typing import List, Dict, Optional, Union
+from datetime import date, datetime, timedelta
 
 DATA_DIR = "library_data"
 BOOKS_FILE = os.path.join(DATA_DIR, "books.json")
@@ -44,7 +43,7 @@ class Book:
         self.borrowed_by = []  # List of (member_id, due_date)
         self.date_added = date.today().isoformat()
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert book to dictionary for JSON serialization."""
         return {
             "title": self.title,
@@ -59,7 +58,7 @@ class Book:
         }
 
     @classmethod
-    def from_dict(cls, data: Dict) -> "Book":
+    def from_dict(cls, data: dict) -> Book:
         """Create book from dictionary."""
         book = cls(
             title=data["title"],
@@ -97,7 +96,7 @@ class Book:
         """Check if any copies are available."""
         return self.available_copies > 0
 
-    def get_overdue_borrowers(self) -> List[tuple]:
+    def get_overdue_borrowers(self) -> list[tuple]:
         """Get list of members with overdue copies."""
         today = date.today()
         overdue = []
@@ -126,7 +125,7 @@ class Member:
         self.max_books = 5  # Maximum books a member can borrow
         self.is_active = True
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Convert member to dictionary for JSON serialization."""
         return {
             "member_id": self.member_id,
@@ -141,7 +140,7 @@ class Member:
         }
 
     @classmethod
-    def from_dict(cls, data: Dict) -> "Member":
+    def from_dict(cls, data: dict) -> Member:
         """Create member from dictionary."""
         member = cls(
             name=data["name"], email=data["email"], phone=data.get("phone", "")
@@ -186,7 +185,7 @@ class Member:
                 return True
         return False
 
-    def get_overdue_books(self) -> List[tuple]:
+    def get_overdue_books(self) -> list[tuple]:
         """Get list of overdue books."""
         today = date.today()
         overdue = []
@@ -218,9 +217,9 @@ class Library:
     """Main library system."""
 
     def __init__(self):
-        self.books: Dict[str, Book] = {}  # ISBN -> Book
-        self.members: Dict[str, Member] = {}  # member_id -> Member
-        self.transactions: List[Dict] = []
+        self.books: dict[str, Book] = {}  # ISBN -> Book
+        self.members: dict[str, Member] = {}  # member_id -> Member
+        self.transactions: list[dict] = []
         self._load_data()
 
     def _ensure_data_dir(self):
@@ -240,7 +239,7 @@ class Library:
                     for book_data in books_data:
                         book = Book.from_dict(book_data)
                         self.books[book.isbn] = book
-            except (json.JSONDecodeError, IOError) as e:
+            except (OSError, json.JSONDecodeError) as e:
                 print(f"Error loading books: {e}")
 
         # Load members
@@ -251,7 +250,7 @@ class Library:
                     for member_data in members_data:
                         member = Member.from_dict(member_data)
                         self.members[member.member_id] = member
-            except (json.JSONDecodeError, IOError) as e:
+            except (OSError, json.JSONDecodeError) as e:
                 print(f"Error loading members: {e}")
 
         # Load transactions
@@ -259,7 +258,7 @@ class Library:
             try:
                 with open(TRANSACTIONS_FILE, "r") as f:
                     self.transactions = json.load(f)
-            except (json.JSONDecodeError, IOError) as e:
+            except (OSError, json.JSONDecodeError) as e:
                 print(f"Error loading transactions: {e}")
 
     def _save_data(self):
@@ -271,7 +270,7 @@ class Library:
         try:
             with open(BOOKS_FILE, "w") as f:
                 json.dump(books_data, f, indent=2)
-        except IOError as e:
+        except OSError as e:
             print(f"Error saving books: {e}")
 
         # Save members
@@ -279,17 +278,17 @@ class Library:
         try:
             with open(MEMBERS_FILE, "w") as f:
                 json.dump(members_data, f, indent=2)
-        except IOError as e:
+        except OSError as e:
             print(f"Error saving members: {e}")
 
         # Save transactions
         try:
             with open(TRANSACTIONS_FILE, "w") as f:
                 json.dump(self.transactions, f, indent=2)
-        except IOError as e:
+        except OSError as e:
             print(f"Error saving transactions: {e}")
 
-    def _record_transaction(self, action: str, details: Dict):
+    def _record_transaction(self, action: str, details: dict):
         """Record a transaction."""
         transaction = {
             "timestamp": datetime.now().isoformat(),
@@ -365,7 +364,7 @@ class Library:
 
     # Member Management
 
-    def register_member(self, name: str, email: str, phone: str = "") -> Optional[str]:
+    def register_member(self, name: str, email: str, phone: str = "") -> str | None:
         """Register a new member and return member ID."""
         # Check if email already exists
         for member in self.members.values():
@@ -493,7 +492,7 @@ class Library:
 
     # Search Functionality
 
-    def search_books(self, **kwargs) -> List[Book]:
+    def search_books(self, **kwargs) -> list[Book]:
         """Search books by various criteria."""
         results = []
 
@@ -533,7 +532,7 @@ class Library:
 
         return results
 
-    def search_members(self, **kwargs) -> List[Member]:
+    def search_members(self, **kwargs) -> list[Member]:
         """Search members by various criteria."""
         results = []
 
@@ -566,7 +565,7 @@ class Library:
 
     # Reports
 
-    def get_overdue_books_report(self) -> Dict:
+    def get_overdue_books_report(self) -> dict:
         """Generate report of overdue books."""
         report = {
             "generated": datetime.now().isoformat(),
@@ -604,7 +603,7 @@ class Library:
 
         return report
 
-    def get_popular_books_report(self, limit: int = 10) -> List[Dict]:
+    def get_popular_books_report(self, limit: int = 10) -> list[dict]:
         """Get report of most popular books."""
         books_with_borrow_count = []
 
@@ -636,7 +635,7 @@ class Library:
             for item in books_with_borrow_count[:limit]
         ]
 
-    def get_member_activity_report(self) -> Dict:
+    def get_member_activity_report(self) -> dict:
         """Generate member activity report."""
         active_members = [m for m in self.members.values() if m.is_active]
         inactive_members = [m for m in self.members.values() if not m.is_active]
@@ -659,7 +658,7 @@ class Library:
             else 0,
         }
 
-    def get_library_statistics(self) -> Dict:
+    def get_library_statistics(self) -> dict:
         """Get overall library statistics."""
         total_books = sum(book.total_copies for book in self.books.values())
         available_books = sum(book.available_copies for book in self.books.values())
@@ -677,22 +676,22 @@ class Library:
 
     # Utility Methods
 
-    def get_book(self, isbn: str) -> Optional[Book]:
+    def get_book(self, isbn: str) -> Book | None:
         """Get book by ISBN."""
         return self.books.get(isbn)
 
-    def get_member(self, member_id: str) -> Optional[Member]:
+    def get_member(self, member_id: str) -> Member | None:
         """Get member by ID."""
         return self.members.get(member_id)
 
-    def get_member_by_email(self, email: str) -> Optional[Member]:
+    def get_member_by_email(self, email: str) -> Member | None:
         """Get member by email."""
         for member in self.members.values():
             if member.email == email:
                 return member
         return None
 
-    def get_books_borrowed_by_member(self, member_id: str) -> List[Book]:
+    def get_books_borrowed_by_member(self, member_id: str) -> list[Book]:
         """Get list of books borrowed by a member."""
         if member_id not in self.members:
             return []

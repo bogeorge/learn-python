@@ -68,7 +68,7 @@ def medium_game():
     max_attempts = 10
     attempts = 0
 
-    print(f"I'm thinking of a number between 1 and 100.")
+    print("I'm thinking of a number between 1 and 100.")
     print(f"You have {max_attempts} attempts to guess it.")
     print("I'll give you hints after each guess!")
 
@@ -131,7 +131,7 @@ def hard_game():
     attempts = 0
     score = 1000  # Starting score
 
-    print(f"I'm thinking of a number between 1 and 200.")
+    print("I'm thinking of a number between 1 and 200.")
     print(f"You have only {max_attempts} attempts!")
     print(f"Starting score: {score}")
     print("Each wrong guess costs you points!")
@@ -261,7 +261,7 @@ def two_player_game():
             print("Please enter a valid number!")
 
     print(f"\n😔 Player 2 loses! The secret number was {secret_number}.")
-    print(f"Player 1 wins!")
+    print("Player 1 wins!")
     return attempts, False
 
 
@@ -427,7 +427,7 @@ def test_game_logic():
     min_num = min(test_numbers)
     max_num = max(test_numbers)
 
-    print(f"Generated 1000 numbers between 1-50:")
+    print("Generated 1000 numbers between 1-50:")
     print(f"  Minimum: {min_num} (Expected: 1)")
     print(f"  Maximum: {max_num} (Expected: 50)")
 

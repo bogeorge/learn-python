@@ -242,31 +242,31 @@ def exercise_3_book_class():
     book2 = Book("To Kill a Mockingbird", "Harper Lee", "978-0061120084", 281)
     book3 = Book("1984", "George Orwell", "978-0451524935", 328)
 
-    print(f"  Books created:")
+    print("  Books created:")
     print(f"    1. {book1}")
     print(f"    2. {book2}")
     print(f"    3. {book3}")
 
     # Test checkout and return
-    print(f"\n  Checkout tests:")
+    print("\n  Checkout tests:")
     print(f"    {book1.checkout('Alice', '2024-12-25')}")
     print(f"    {book2.checkout('Bob', '2024-12-20')}")
     print(f"    {book1.checkout('Charlie', '2024-12-30')}")  # Should fail
 
-    print(f"\n  Status:")
+    print("\n  Status:")
     print(f"    Book1: {book1.get_status()}")
     print(f"    Book2: {book2.get_status()}")
     print(f"    Book3: {book3.get_status()}")
 
-    print(f"\n  Overdue check (current date: 2024-12-26):")
+    print("\n  Overdue check (current date: 2024-12-26):")
     print(f"    Book1 overdue? {book1.is_overdue('2024-12-26')}")
     print(f"    Book2 overdue? {book2.is_overdue('2024-12-26')}")
 
-    print(f"\n  Return tests:")
+    print("\n  Return tests:")
     print(f"    {book1.return_book()}")
     print(f"    {book1.return_book()}")  # Should say not checked out
 
-    print(f"\n  Final status:")
+    print("\n  Final status:")
     print(f"    Book1: {book1.get_status()}")
 
 
@@ -340,31 +340,31 @@ def exercise_4_rectangle_class():
     rect2 = Rectangle(4, 4)
     rect3 = Rectangle(6, 2)
 
-    print(f"  Created rectangles:")
+    print("  Created rectangles:")
     print(f"    1. {rect1}")
     print(f"    2. {rect2} (square)")
     print(f"    3. {rect3}")
 
     # Test calculations
-    print(f"\n  Calculations for rect1:")
+    print("\n  Calculations for rect1:")
     print(f"    Area: {rect1.area()}")
     print(f"    Perimeter: {rect1.perimeter()}")
     print(f"    Diagonal: {rect1.diagonal():.2f}")
     print(f"    Is square? {rect1.is_square()}")
 
-    print(f"\n  Calculations for rect2:")
+    print("\n  Calculations for rect2:")
     print(f"    Area: {rect2.area()}")
     print(f"    Is square? {rect2.is_square()}")
 
     # Test operations
-    print(f"\n  Operations:")
+    print("\n  Operations:")
     rect1_copy = Rectangle(5, 3)
     print(f"    rect1 == rect1_copy? {rect1 == rect1_copy}")
     print(f"    rect1 < rect2? {rect1 < rect2}")
     print(f"    rect2 < rect3? {rect2 < rect3}")
 
     # Test scaling and rotating
-    print(f"\n  Transformations:")
+    print("\n  Transformations:")
     rect1.scale(2)
     print(f"    After scaling by 2: {rect1}")
     print(f"    New area: {rect1.area()}")
@@ -493,12 +493,12 @@ def exercise_5_bank_account_class():
     account1 = BankAccount("ACC001", "Alice Johnson", 1000.00)
     account2 = BankAccount("ACC002", "Bob Smith", 500.00)
 
-    print(f"  Created accounts:")
+    print("  Created accounts:")
     print(f"    1. {account1}")
     print(f"    2. {account2}")
 
     # Test operations
-    print(f"\n  Account operations:")
+    print("\n  Account operations:")
     print(f"    {account1.deposit(250.50)}")
     print(f"    {account1.withdraw(100.00)}")
     print(f"    {account1.withdraw(2000.00)}")  # Should fail
@@ -508,10 +508,10 @@ def exercise_5_bank_account_class():
     print(f"    {account1.add_interest(2.5)}")
 
     # Get statements
-    print(f"\n  Account1 statement:")
+    print("\n  Account1 statement:")
     print(account1.get_statement())
 
-    print(f"\n  Account2 statement (first 3 transactions):")
+    print("\n  Account2 statement (first 3 transactions):")
     print(account2.get_statement(3))
 
 
@@ -684,7 +684,7 @@ def mini_project_bank_account_system():
         new_account = BankAccount(account_number, owner_name, initial_balance)
         accounts[account_number] = new_account
 
-        print(f"Account created successfully!")
+        print("Account created successfully!")
         print(f"{new_account}")
 
     print(f"Loaded {len(accounts)} account(s).")

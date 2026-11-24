@@ -1,7 +1,7 @@
-import sys
 import csv
 import json
 import os
+import sys
 
 """
 Week 4, Day 23: CSV & JSON
@@ -199,7 +199,7 @@ def exercise_4_json_advanced():
     print("\n\nExercise 4: Advanced JSON")
     print("-" * 40)
 
-    from datetime import datetime, date
+    from datetime import date, datetime
 
     # Custom encoder for dates
     class CustomJSONEncoder(json.JSONEncoder):

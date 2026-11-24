@@ -68,9 +68,7 @@ def exercise_2_string_formatting():
     print(f"1. f-string: {profile_fstring}")
 
     # 2. format() method
-    profile_format = "My name is {}, I'm {} years old, and I work as a {}.".format(
-        name, age, profession
-    )
+    profile_format = f"My name is {name}, I'm {age} years old, and I work as a {profession}."
     print(f"2. format(): {profile_format}")
 
     # 3. % formatting
@@ -226,7 +224,7 @@ def exercise_4_type_checking():
 
     for value in test_values:
         bool_value = bool(value)
-        print(f"  bool({repr(value)}) = {bool_value}")
+        print(f"  bool({value!r}) = {bool_value}")
 
 
 def mini_project_bmi_calculator():

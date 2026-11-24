@@ -1,5 +1,5 @@
-import sys
 import os
+import sys
 
 """
 Week 4, Day 22: File I/O Basics
@@ -53,7 +53,7 @@ File handling is important for many applications."""
     word_count = len(content.split())
     char_count = len(content)
 
-    print(f"\nStatistics:")
+    print("\nStatistics:")
     print(f"  Lines: {line_count}")
     print(f"  Words: {word_count}")
     print(f"  Characters: {char_count}")
@@ -83,8 +83,7 @@ def exercise_2_write_text_file():
 
     with open("employees.csv", "w") as f:
         f.write("Name,Age,Position\n")
-        for entry in data:
-            f.write(f"{entry}\n")
+        f.writelines(f"{entry}\n" for entry in data)
 
     print("Created employees.csv with data:")
     with open("employees.csv", "r") as f:
@@ -94,8 +93,7 @@ def exercise_2_write_text_file():
     new_employees = ["Eve,32,Analyst", "Frank,40,Director"]
 
     with open("employees.csv", "a") as f:
-        for entry in new_employees:
-            f.write(f"{entry}\n")
+        f.writelines(f"{entry}\n" for entry in new_employees)
 
     print("\nAfter appending:")
     with open("employees.csv", "r") as f:
@@ -284,7 +282,7 @@ def exercise_5_file_operations():
     print("\n3. Rename file:")
     if os.path.exists("test2.txt"):
         os.rename("test2.txt", "renamed_test.txt")
-        print(f"  Renamed test2.txt to renamed_test.txt")
+        print("  Renamed test2.txt to renamed_test.txt")
         print(f"  renamed_test.txt exists: {os.path.exists('renamed_test.txt')}")
 
     # List directory contents
@@ -367,7 +365,7 @@ def mini_project_simple_text_editor():
             words = content.split()
             chars = len(content)
 
-            print(f"\nStatistics:")
+            print("\nStatistics:")
             print(f"  Lines: {len(lines)}")
             print(f"  Words: {len(words)}")
             print(f"  Characters: {chars}")

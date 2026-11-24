@@ -1,7 +1,5 @@
-import sys
 import json
-import pickle
-from datetime import datetime
+import sys
 
 """
 Week 3, Day 20: Review & Project Day
@@ -42,14 +40,14 @@ def review_exercise_1_classes_objects():
     book1 = Book("Python Programming", "John Doe", "123-456789")
     book2 = Book("Data Science Basics", "Jane Smith", "987-654321")
 
-    print(f"Created books:")
+    print("Created books:")
     print(f"  1. {book1}")
     print(f"  2. {book2}")
 
     # Use methods
     print(f"\nChecking out book1: {book1.check_out()}")
     print(f"Checking out book1 again: {book1.check_out()}")
-    print(f"\nCurrent status:")
+    print("\nCurrent status:")
     print(f"  {book1}")
     print(f"  {book2}")
 
@@ -103,16 +101,16 @@ def review_exercise_2_inheritance():
     car = Car("Toyota", "Camry", 2020, 4)
     truck = Truck("Ford", "F-150", 2019, 2.5)
 
-    print(f"Created vehicles:")
+    print("Created vehicles:")
     print(f"  Car: {car.year} {car.make} {car.model}")
     print(f"  Truck: {truck.year} {truck.make} {truck.model}")
 
     # Demonstrate inheritance
-    print(f"\nCommon methods (inherited):")
+    print("\nCommon methods (inherited):")
     print(f"  Car: {car.accelerate(50)}")
     print(f"  Truck: {truck.accelerate(40)}")
 
-    print(f"\nUnique methods:")
+    print("\nUnique methods:")
     print(f"  Car: {car.honk()}")
     print(f"  Truck: {truck.load(1.5)}")
 
@@ -242,11 +240,11 @@ def review_exercise_5_modules_packages():
     import math
     from datetime import date
 
-    print(f"\nUsing math module:")
+    print("\nUsing math module:")
     print(f"  math.sqrt(25) = {math.sqrt(25)}")
     print(f"  math.pi = {math.pi:.5f}")
 
-    print(f"\nUsing datetime module:")
+    print("\nUsing datetime module:")
     today = date.today()
     print(f"  Today's date: {today}")
     print(f"  Year: {today.year}, Month: {today.month}, Day: {today.day}")

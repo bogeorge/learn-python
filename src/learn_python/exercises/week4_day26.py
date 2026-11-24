@@ -1,5 +1,5 @@
-import sys
 import itertools
+import sys
 
 """
 Week 4, Day 26: Generators & Iterators
@@ -253,7 +253,7 @@ def exercise_3_generator_state():
     print(f"  Normal yield: {gen.send(None)}")
 
     # Send error signal
-    print(f"  Sending error signal...")
+    print("  Sending error signal...")
     print(f"  Result: {gen.send('error')}")
 
     # Throw exception into generator
@@ -369,7 +369,7 @@ def exercise_4_itertools_module():
 
     data = list(range(20))  # 0-19
     print(f"  Original data: {data}")
-    print(f"  Batched (size 5):")
+    print("  Batched (size 5):")
     for i, batch in enumerate(batched(data, 5), 1):
         print(f"    Batch {i}: {batch}")
 
@@ -417,8 +417,7 @@ def exercise_5_lazy_evaluation():
 
     # Create test file
     with open("numbers.txt", "w") as f:
-        for i in range(100):
-            f.write(f"{i}\n")
+        f.writelines(f"{i}\n" for i in range(100))
 
     # Build processing pipeline
     pipeline = take_first(square(filter_even(read_numbers("numbers.txt"))), 10)
@@ -791,7 +790,7 @@ def mini_project_pagination_system():
                 f"  #{product['id']:3d} {product['name']:15s} ${product['price']:6.2f} [{product['category']}]"
             )
 
-        print(f"\nNavigation:")
+        print("\nNavigation:")
         if page_info["has_previous"]:
             print("  P - Previous page")
         if page_info["has_next"]:

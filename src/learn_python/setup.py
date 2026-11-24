@@ -7,9 +7,9 @@ Run it with: python3 setup.py
 """
 
 import os
+import platform
 import subprocess
 import sys
-import platform
 
 
 def print_header():

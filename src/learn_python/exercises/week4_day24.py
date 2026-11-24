@@ -1,8 +1,8 @@
-import sys
-import json
-from datetime import datetime, date, time, timedelta
 import calendar
+import json
 import os
+import sys
+from datetime import UTC, date, datetime, time, timedelta
 
 """
 Week 4, Day 24: Dates & Times
@@ -221,10 +221,9 @@ def exercise_4_timezones_conversions():
     # Note: For actual timezone support, use pytz or zoneinfo (Python 3.9+)
     # This exercise uses UTC offsets for demonstration
 
-    from datetime import timezone
 
     # UTC time
-    utc_now = datetime.now(timezone.utc)
+    utc_now = datetime.now(UTC)
     print(f"Current UTC time: {utc_now}")
 
     # Create timezone-aware datetimes with offsets
@@ -536,7 +535,7 @@ def mini_project_event_scheduler():
         # Check for conflicts
         conflicts = check_conflicts(event)
         if conflicts:
-            print(f"\n⚠️  Scheduling conflicts found:")
+            print("\n⚠️  Scheduling conflicts found:")
             for conflict in conflicts:
                 print(
                     f"  - {conflict.title} at {conflict.event_time.strftime('%I:%M %p')}"

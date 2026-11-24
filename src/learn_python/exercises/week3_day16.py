@@ -1,5 +1,5 @@
-import sys
 import math
+import sys
 
 """
 Week 3, Day 16: Inheritance
@@ -572,7 +572,7 @@ def exercise_4_shapes_hierarchy():
 
         # Scale and show new calculations
         shape.scale(2)
-        print(f"    After scaling by 2:")
+        print("    After scaling by 2:")
         print(f"      New area: {shape.area():.2f}")
         print(f"      New perimeter: {shape.perimeter():.2f}")
 
@@ -894,7 +894,7 @@ def mini_project_vehicle_hierarchy_system():
                 return
 
             vehicles[vehicle_id] = vehicle
-            print(f"Vehicle created successfully!")
+            print("Vehicle created successfully!")
             print(f"{vehicle.get_info()}")
 
         except ValueError:
@@ -934,9 +934,9 @@ def mini_project_vehicle_hierarchy_system():
 
                 if choice == "3":  # Operate vehicle
                     print(f"\nOperating {vehicle.make} {vehicle.model}:")
-                    print(f"  1. Start")
-                    print(f"  2. Stop")
-                    print(f"  3. Drive")
+                    print("  1. Start")
+                    print("  2. Stop")
+                    print("  3. Drive")
 
                     op_choice = input("Enter operation (1-3): ")
 

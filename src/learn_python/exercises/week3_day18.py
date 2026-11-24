@@ -1,6 +1,4 @@
 import sys
-import json
-from datetime import datetime
 
 """
 Week 3, Day 18: Special Methods & Error Handling
@@ -96,23 +94,23 @@ def exercise_1_special_methods():
     cart2.add_item("Bread", 2.49)
     cart2.add_item("Eggs", 3.99)
 
-    print(f"\n  cart1:\n{str(cart1)}")
-    print(f"\n  cart2:\n{str(cart2)}")
+    print(f"\n  cart1:\n{cart1!s}")
+    print(f"\n  cart2:\n{cart2!s}")
 
     # Test special methods
-    print(f"\n  Special methods demonstration:")
+    print("\n  Special methods demonstration:")
     print(f"    len(cart1): {len(cart1)}")
     print(f"    cart1[1]: {cart1[1]}")
     print(f"    cart1[0:2]: {cart1[0:2]}")
 
     # Test addition
     combined = cart1 + cart2
-    print(f"\n  cart1 + cart2:")
+    print("\n  cart1 + cart2:")
     print(f"    Items: {len(combined)}")
     print(f"    Total: ${sum(combined.prices):.2f}")
 
     # Test iteration
-    print(f"\n  Iterating through cart1:")
+    print("\n  Iterating through cart1:")
     for item, price in cart1:
         print(f"    {item}: ${price:.2f}")
 
@@ -122,7 +120,7 @@ def exercise_1_special_methods():
     cart3.add_item("Banana", 0.99)
     cart3.add_item("Milk", 3.49)
 
-    print(f"\n  Equality test:")
+    print("\n  Equality test:")
     print(f"    cart1 == cart2: {cart1 == cart2}")
     print(f"    cart1 == cart3: {cart1 == cart3}")
 
@@ -316,7 +314,6 @@ def exercise_4_custom_exceptions():
     class BankError(Exception):
         """Base class for all bank-related errors."""
 
-        pass
 
     class InsufficientFundsError(BankError):
         """Raised when account has insufficient funds."""
@@ -334,7 +331,6 @@ def exercise_4_custom_exceptions():
     class InvalidAccountError(BankError):
         """Raised when account is invalid."""
 
-        pass
 
     class TransactionLimitError(BankError):
         """Raised when transaction limit is exceeded."""
@@ -353,7 +349,6 @@ def exercise_4_custom_exceptions():
     class InventoryError(Exception):
         """Base class for inventory errors."""
 
-        pass
 
     class OutOfStockError(InventoryError):
         """Raised when item is out of stock."""
@@ -372,12 +367,10 @@ def exercise_4_custom_exceptions():
     class InvalidItemError(InventoryError):
         """Raised when item is not found in inventory."""
 
-        pass
 
     class NegativeQuantityError(InventoryError):
         """Raised when quantity is negative."""
 
-        pass
 
     # Bank system using custom exceptions
     class BankAccount:
@@ -638,22 +631,18 @@ def mini_project_calculator_with_error_handling():
     class CalculatorError(Exception):
         """Base class for all calculator errors."""
 
-        pass
 
     class DivisionByZeroError(CalculatorError):
         """Raised when attempting division by zero."""
 
-        pass
 
     class InvalidInputError(CalculatorError):
         """Raised when input cannot be converted to number."""
 
-        pass
 
     class OperationError(CalculatorError):
         """Raised for operation-specific errors."""
 
-        pass
 
     class Calculator:
         """Calculator with comprehensive error handling."""
@@ -760,7 +749,7 @@ def mini_project_calculator_with_error_handling():
             try:
                 self.memory = self._validate_number(value)
                 return f"Memory stored: {self.memory}"
-            except CalculatorError as e:
+            except CalculatorError:
                 raise
 
         def memory_recall(self):
@@ -773,7 +762,7 @@ def mini_project_calculator_with_error_handling():
                 num = self._validate_number(value)
                 self.memory += num
                 return f"Memory updated: {self.memory}"
-            except CalculatorError as e:
+            except CalculatorError:
                 raise
 
         def get_history(self, limit=10):
@@ -822,7 +811,7 @@ def mini_project_calculator_with_error_handling():
             except ValueError:
                 print("Invalid number. Enter a number or 'm' for memory.")
 
-    print(f"Calculator initialized. Type 'm' to use memory value.")
+    print("Calculator initialized. Type 'm' to use memory value.")
 
     while True:
         display_menu()
