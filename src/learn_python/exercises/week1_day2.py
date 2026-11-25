@@ -337,8 +337,6 @@ def mini_project_bmi_calculator():
         print("Error: Please enter valid numbers!")
     except ZeroDivisionError:
         print("Error: Height cannot be zero!")
-    except Exception as e:
-        print(f"An error occurred: {e}")
 
 
 def run_all_exercises():

@@ -202,7 +202,8 @@ def exercise_4_file_exceptions():
             f.write("test")
     except PermissionError:
         print("  Permission denied - can't write to protected location")
-    except Exception as e:
+    except OSError as e:
+        # Other file-system errors (e.g. read-only disk) are OSError subclasses
         print(f"  Other error: {type(e).__name__}")
 
     # IsADirectoryError

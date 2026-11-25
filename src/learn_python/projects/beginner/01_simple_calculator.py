@@ -69,8 +69,12 @@ def simple_calculator():
 
     except ValueError:
         print("Error: Please enter valid numbers!")
-    except Exception as e:
-        print(f"An error occurred: {e}")
+    except ZeroDivisionError:
+        # e.g. 5 % 0 or 0 ** -1 (the "/" case is checked above)
+        print("Error: Division by zero is not allowed!")
+    except OverflowError:
+        # e.g. 10 ** 1000 is too large for a float
+        print("Error: Result is too large to calculate!")
 
 
 def advanced_calculator():

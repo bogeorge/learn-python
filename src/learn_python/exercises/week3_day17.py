@@ -175,7 +175,7 @@ def exercise_2_encapsulation():
             try:
                 # This will work from inside the class
                 print(f"  Inside class: __pin = {self.__pin}")
-            except:
+            except AttributeError:
                 print("  Cannot access __pin directly")
 
     print("\nEncapsulation example - Bank Account:")
