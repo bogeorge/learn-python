@@ -64,7 +64,7 @@ def create_virtualenv():
 
         # Create virtual environment
         result = subprocess.run(
-            [sys.executable, "-m", "venv", "venv"], capture_output=True, text=True, check=True
+            [sys.executable, "-m", "venv", "venv"], capture_output=True, text=True, check=False
         )
 
         if result.returncode == 0:
@@ -80,7 +80,7 @@ def create_virtualenv():
         print("   Ubuntu/Debian: sudo apt install python3-venv")
         print("   macOS: python3 -m ensurepip")
         return False
-    except Exception as e:
+    except OSError as e:
         print(f"❌ Error: {e}")
         return False
 
@@ -91,7 +91,7 @@ def check_pip():
 
     try:
         result = subprocess.run(
-            [sys.executable, "-m", "pip", "--version"], capture_output=True, text=True, check=True
+            [sys.executable, "-m", "pip", "--version"], capture_output=True, text=True, check=False
         )
 
         if result.returncode == 0:
@@ -101,7 +101,7 @@ def check_pip():
             print("❌ pip is not working properly.")
             return False
 
-    except Exception as e:
+    except OSError as e:
         print(f"❌ Error checking pip: {e}")
         return False
 
@@ -115,7 +115,7 @@ def upgrade_pip():
             [sys.executable, "-m", "pip", "install", "--upgrade", "pip"],
             capture_output=True,
             text=True,
-            check=True
+            check=False
         )
 
         if result.returncode == 0:
@@ -125,7 +125,7 @@ def upgrade_pip():
             print(f"❌ Failed to upgrade pip: {result.stderr}")
             return False
 
-    except Exception as e:
+    except OSError as e:
         print(f"❌ Error upgrading pip: {e}")
         return False
 
@@ -148,7 +148,7 @@ def install_basic_packages():
                 [sys.executable, "-m", "pip", "install", package],
                 capture_output=True,
                 text=True,
-                check=True
+                check=False
             )
 
             if result.returncode == 0:
@@ -159,7 +159,7 @@ def install_basic_packages():
         print("\n✅ Basic packages installed.")
         return True
 
-    except Exception as e:
+    except OSError as e:
         print(f"❌ Error installing packages: {e}")
         return False
 
@@ -304,7 +304,7 @@ Add any additional notes, insights, or reminders here.
             f.write(progress_content)
         print("✅ Progress file created at docs/progress.md")
         return True
-    except Exception as e:
+    except OSError as e:
         print(f"❌ Error creating progress file: {e}")
         return False
 

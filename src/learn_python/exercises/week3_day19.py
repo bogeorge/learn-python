@@ -152,7 +152,7 @@ if __name__ == "__main__":
         # Clean up
         os.remove(module_path)
 
-    except Exception as e:
+    except (OSError, ImportError) as e:
         print(f"  Note: Could not create temp module file: {e}")
         print("  Demonstrating module concepts instead...")
 
@@ -274,7 +274,7 @@ if __name__ == "__main__":
         # Clean up
         os.remove(module_path)
 
-    except Exception as e:
+    except (OSError, ImportError) as e:
         print(f"  Note: Could not create temp module: {e}")
         print("\n  Key concepts:")
         print("  1. __name__ is '__main__' when file is run directly")
@@ -452,7 +452,7 @@ def power(base, exponent):
         shutil.rmtree(temp_dir)
         sys.path.pop(0)  # Remove temp path
 
-    except Exception as e:
+    except (OSError, ImportError) as e:
         print(f"  Note: Could not create temp package: {e}")
         print("\n  Key package concepts:")
         print("  1. Packages are directories with __init__.py")

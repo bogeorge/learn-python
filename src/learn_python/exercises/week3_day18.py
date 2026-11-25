@@ -572,7 +572,7 @@ def exercise_5_context_managers():
             f.write("Hello, world!\n")
             f.write("This is a test file.\n")
         print("    File written successfully")
-    except Exception as e:
+    except OSError as e:
         print(f"    Error: {e}")
 
     # Read back the file

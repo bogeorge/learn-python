@@ -371,7 +371,8 @@ def mini_project_simple_text_editor():
             print(f"  Characters: {chars}")
 
             return filename, content
-        except Exception as e:
+        except (OSError, UnicodeDecodeError) as e:
+            # UnicodeDecodeError: the file isn't text (e.g. an image)
             print(f"Error reading file: {e}")
             return None, None
 

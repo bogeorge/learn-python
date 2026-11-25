@@ -472,7 +472,9 @@ def mini_project_event_scheduler():
                     data = json.load(f)
                     events = [Event.from_dict(item) for item in data]
                 print(f"Loaded {len(events)} events from {events_file}")
-            except Exception as e:
+            except (OSError, json.JSONDecodeError, KeyError, ValueError, TypeError) as e:
+                # A corrupted or hand-edited file: missing keys (KeyError),
+                # bad dates (ValueError) or the wrong structure (TypeError)
                 print(f"Error loading events: {e}")
                 events = []
         else:
@@ -485,7 +487,7 @@ def mini_project_event_scheduler():
             with open(events_file, "w") as f:
                 json.dump(data, f, indent=2)
             print(f"Saved {len(events)} events to {events_file}")
-        except Exception as e:
+        except OSError as e:
             print(f"Error saving events: {e}")
 
     def add_event():

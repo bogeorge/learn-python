@@ -476,7 +476,8 @@ def mini_project_data_export_import_system():
             else:
                 print(f"Unsupported format: {format_type}")
 
-        except Exception as e:
+        except (OSError, ValueError) as e:
+            # ValueError: a row has keys that aren't in the CSV header
             print(f"Export failed: {e}")
 
     def import_data(filename):
@@ -506,7 +507,7 @@ def mini_project_data_export_import_system():
                 print(f"Unsupported file format: {filename}")
                 return None
 
-        except Exception as e:
+        except (OSError, UnicodeDecodeError, json.JSONDecodeError, csv.Error) as e:
             print(f"Import failed: {e}")
             return None
 
