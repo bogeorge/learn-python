@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Python Learning Workspace Setup Script
 
@@ -65,7 +64,7 @@ def create_virtualenv():
 
         # Create virtual environment
         result = subprocess.run(
-            [sys.executable, "-m", "venv", "venv"], capture_output=True, text=True
+            [sys.executable, "-m", "venv", "venv"], capture_output=True, text=True, check=True
         )
 
         if result.returncode == 0:
@@ -92,7 +91,7 @@ def check_pip():
 
     try:
         result = subprocess.run(
-            [sys.executable, "-m", "pip", "--version"], capture_output=True, text=True
+            [sys.executable, "-m", "pip", "--version"], capture_output=True, text=True, check=True
         )
 
         if result.returncode == 0:
@@ -116,6 +115,7 @@ def upgrade_pip():
             [sys.executable, "-m", "pip", "install", "--upgrade", "pip"],
             capture_output=True,
             text=True,
+            check=True
         )
 
         if result.returncode == 0:
@@ -148,6 +148,7 @@ def install_basic_packages():
                 [sys.executable, "-m", "pip", "install", package],
                 capture_output=True,
                 text=True,
+                check=True
             )
 
             if result.returncode == 0:

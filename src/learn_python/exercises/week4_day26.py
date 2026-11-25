@@ -161,8 +161,8 @@ def exercise_2_iterator_protocol():
             self.filename = filename
 
         def __iter__(self):
-            self.file = open(self.filename, "r")
-            return self
+            with open(self.filename, "r") as self.file:
+                return self
 
         def __next__(self):
             line = self.file.readline()
@@ -409,11 +409,10 @@ def exercise_5_lazy_evaluation():
     def take_first(numbers, n):
         """Take first n numbers."""
         count = 0
-        for value in numbers:
+        for count, value in enumerate(numbers):
             if count >= n:
                 break
             yield value
-            count += 1
 
     # Create test file
     with open("numbers.txt", "w") as f:

@@ -442,10 +442,8 @@ def test_game_logic():
     # Simulate a game
     secret = 42
     guesses = [20, 50, 35, 45, 42]  # Simulated guesses
-    attempts = 0
 
-    for guess in guesses:
-        attempts += 1
+    for attempts, guess in enumerate(guesses):
         if guess == secret:
             print(f"  ✅ Correct guess on attempt {attempts}")
             break

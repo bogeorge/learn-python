@@ -554,13 +554,11 @@ def mini_project_event_scheduler():
         """Check if new event conflicts with existing events."""
         conflicts = []
         for existing_event in events:
-            if existing_event.event_date == new_event.event_date:
-                # Check for time overlap
-                if not (
+            if existing_event.event_date == new_event.event_date and not (
                     new_event.end_datetime <= existing_event.start_datetime
                     or new_event.start_datetime >= existing_event.end_datetime
                 ):
-                    conflicts.append(existing_event)
+                conflicts.append(existing_event)
         return conflicts
 
     def view_events():

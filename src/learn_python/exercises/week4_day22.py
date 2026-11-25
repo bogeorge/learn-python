@@ -220,8 +220,8 @@ def exercise_4_file_exceptions():
     print("\n4. Using try-except-finally:")
     f = None
     try:
-        f = open("temp_file.txt", "w")
-        f.write("Some data")
+        with open("temp_file.txt", "w") as f:
+            f.write("Some data")
         # Simulate an error
     except ZeroDivisionError:
         print("  Math error occurred")

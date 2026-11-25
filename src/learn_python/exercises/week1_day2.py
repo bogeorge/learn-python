@@ -72,7 +72,7 @@ def exercise_2_string_formatting():
     print(f"2. format(): {profile_format}")
 
     # 3. % formatting
-    profile_percent = "My name is %s, I'm %d years old, and I work as a %s." % (
+    profile_percent = "My name is %s, I'm %d years old, and I work as a %s." % (  # noqa: UP031
         name,
         age,
         profession,

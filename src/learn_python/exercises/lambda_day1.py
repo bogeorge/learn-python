@@ -8,7 +8,7 @@ Run them locally to understand the concepts before deploying to AWS.
 
 import json
 import os
-from datetime import datetime
+from datetime import UTC, datetime
 from typing import Any
 
 
@@ -41,7 +41,7 @@ def exercise_1_lambda_handler_pattern():
 
         # Business logic
         greeting = f"Hello {name}! (User ID: {user_id})"
-        timestamp = datetime.utcnow().isoformat()
+        timestamp = datetime.now(UTC).isoformat()
 
         # Return response (API Gateway expects specific format)
         return {
@@ -115,7 +115,7 @@ def exercise_2_environment_variables():
             "apiVersion": api_version,
             "debugEnabled": debug_mode,
             "region": os.environ.get("AWS_REGION", "us-east-1"),
-            "timestamp": datetime.utcnow().isoformat(),
+            "timestamp": datetime.now(UTC).isoformat(),
         }
 
         # Add extra debug info if enabled
@@ -236,7 +236,7 @@ def exercise_3_error_handling():
                     {
                         "success": True,
                         "data": response,
-                        "timestamp": datetime.utcnow().isoformat(),
+                        "timestamp": datetime.now(UTC).isoformat(),
                     }
                 ),
             }
@@ -250,7 +250,7 @@ def exercise_3_error_handling():
                         "success": False,
                         "error": str(e),
                         "errorType": "ValidationError",
-                        "timestamp": datetime.utcnow().isoformat(),
+                        "timestamp": datetime.now(UTC).isoformat(),
                     }
                 ),
             }
@@ -264,7 +264,7 @@ def exercise_3_error_handling():
                         "success": False,
                         "error": f"Invalid JSON: {e!s}",
                         "errorType": "ParseError",
-                        "timestamp": datetime.utcnow().isoformat(),
+                        "timestamp": datetime.now(UTC).isoformat(),
                     }
                 ),
             }
@@ -281,7 +281,7 @@ def exercise_3_error_handling():
                         "success": False,
                         "error": "Internal server error",
                         "errorType": "InternalError",
-                        "timestamp": datetime.utcnow().isoformat(),
+                        "timestamp": datetime.now(UTC).isoformat(),
                     }
                 ),
             }
@@ -387,7 +387,7 @@ def exercise_4_logging_and_monitoring():
 
         def __init__(self, correlation_id=None):
             self.correlation_id = (
-                correlation_id or f"req-{datetime.utcnow().timestamp()}"
+                correlation_id or f"req-{datetime.now(UTC).timestamp()}"
             )
             self.logger = logging.getLogger(__name__)
 
@@ -403,7 +403,7 @@ def exercise_4_logging_and_monitoring():
         def _log(self, level: str, message: str, extra: dict | None = None):
             """Log structured message."""
             log_entry = {
-                "timestamp": datetime.utcnow().isoformat(),
+                "timestamp": datetime.now(UTC).isoformat(),
                 "level": level,
                 "correlationId": self.correlation_id,
                 "message": message,
@@ -414,7 +414,7 @@ def exercise_4_logging_and_monitoring():
         def info(self, message: str, extra: dict | None = None):
             self._log("INFO", message, extra)
 
-        def warn(self, message: str, extra: dict | None = None):
+        def warning(self, message: str, extra: dict | None = None):
             self._log("WARN", message, extra)
 
         def error(self, message: str, extra: dict | None = None):
@@ -429,7 +429,7 @@ def exercise_4_logging_and_monitoring():
                 "value": value,
                 "unit": unit,
                 "_aws": {
-                    "Timestamp": int(datetime.utcnow().timestamp() * 1000),
+                    "Timestamp": int(datetime.now(UTC).timestamp() * 1000),
                     "CloudWatchMetrics": [
                         {
                             "Namespace": "LambdaExercises",
@@ -453,7 +453,7 @@ def exercise_4_logging_and_monitoring():
 
         logger.info(
             "Lambda execution started",
-            {
+            extra={
                 "eventType": type(event).__name__,
                 "eventKeys": list(event.keys()),
                 "functionName": context.function_name
@@ -492,7 +492,7 @@ def exercise_4_logging_and_monitoring():
                 if not is_valid:
                     logger.warning(
                         "Validation failed",
-                        {"data": data, "reason": "Invalid flag set to false"},
+                        extra={"data": data, "reason": "Invalid flag set to false"},
                     )
                     raise ValueError("Data validation failed")
 
@@ -506,7 +506,7 @@ def exercise_4_logging_and_monitoring():
             # Success
             logger.info(
                 "Lambda execution completed successfully",
-                {
+                extra={
                     "result": result,
                     "durationMs": 150,  # Simulated
                 },
@@ -678,7 +678,7 @@ def mini_project_simple_api_lambda():
             "body": json.dumps(
                 {
                     "status": "healthy",
-                    "timestamp": datetime.utcnow().isoformat(),
+                    "timestamp": datetime.now(UTC).isoformat(),
                     "service": "UserAPI",
                 }
             ),
@@ -740,13 +740,13 @@ def mini_project_simple_api_lambda():
 
         # In real Lambda, this would save to database
         # For demo, return success with generated ID
-        user_id = f"user-{int(datetime.utcnow().timestamp())}"
+        user_id = f"user-{int(datetime.now(UTC).timestamp())}"
 
         new_user = {
             "id": user_id,
             "name": body["name"],
             "email": body["email"],
-            "createdAt": datetime.utcnow().isoformat(),
+            "createdAt": datetime.now(UTC).isoformat(),
         }
 
         # Add optional fields if provided

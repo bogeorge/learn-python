@@ -166,12 +166,10 @@ class TodoList:
         for task in self.tasks:
             matches = False
 
-            if search_in in ["all", "description"]:
-                if search_term in task["description"].lower():
+            if search_in in ["all", "description"] and search_term in task["description"].lower():
                     matches = True
 
-            if search_in in ["all", "category"]:
-                if search_term in task["category"].lower():
+            if search_in in ["all", "category"] and search_term in task["category"].lower():
                     matches = True
 
             if matches:

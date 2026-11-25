@@ -47,7 +47,7 @@ def exercise_1_import_statements():
     print("\n  5. Conditional imports:")
     try:
         # Try to import a module that might not be installed
-        import requests
+        import requests # noqa: F401, I001
 
         print("     'requests' module is available")
     except ImportError:
@@ -422,8 +422,6 @@ def power(base, exponent):
 ''')
 
         # Add to Python path and import
-        import sys
-
         sys.path.insert(0, os.path.dirname(temp_dir))
 
         print(f"\n    Created package at: {temp_dir}")

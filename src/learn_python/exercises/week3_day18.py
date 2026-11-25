@@ -745,11 +745,8 @@ def mini_project_calculator_with_error_handling():
 
         def memory_store(self, value):
             """Store value in memory."""
-            try:
-                self.memory = self._validate_number(value)
-                return f"Memory stored: {self.memory}"
-            except CalculatorError:
-                raise
+            self.memory = self._validate_number(value)
+            return f"Memory stored: {self.memory}"
 
         def memory_recall(self):
             """Recall value from memory."""
@@ -757,12 +754,9 @@ def mini_project_calculator_with_error_handling():
 
         def memory_add(self, value):
             """Add value to memory."""
-            try:
-                num = self._validate_number(value)
-                self.memory += num
-                return f"Memory updated: {self.memory}"
-            except CalculatorError:
-                raise
+            num = self._validate_number(value)
+            self.memory += num
+            return f"Memory updated: {self.memory}"
 
         def get_history(self, limit=10):
             """Get calculation history."""
